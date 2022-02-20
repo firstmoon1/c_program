@@ -1,0 +1,181 @@
+1 soru
+#include <stdio.h>
+
+int main() {
+	int n = 0, arr[101], sum=0;
+	int sum_in = 0;
+	
+	char temp; 
+	do { 
+	  scanf("%d%c", &arr[n], &temp); 
+	  sum_in+=arr[n];
+	  n++; 
+	  
+	} while(temp != '\n'); 
+	
+	sum=(n-1)*(n)/2;
+	
+	printf("%d ",sum_in-sum);
+
+	return 0;
+
+
+
+2 soru
+#include <stdio.h>
+struct distance
+{
+    int feet;
+    float inch;
+};
+int main()
+{
+    struct distance dist1, dist2, dist3;
+    scanf("%d", &dist1.feet);
+    scanf("%f", &dist1.inch);
+
+    scanf("%d", &dist2.feet);
+    scanf("%f", &dist2.inch);
+    
+    //Adding distances d1 and d2 and storing it in d3
+     dist3.feet = dist1.feet + dist2.feet; 
+     dist3.inch = dist1.inch + dist2.inch;
+
+     if (dist3.inch >= 12) {     /* if inch is greater or equal to 12, converting it to feet. */
+         dist3.inch -= 12;
+         ++dist3.feet;
+    }
+
+    //passing structure variables dist1 and dist2 by value whereas passing structure variable dist3 by reference
+    printf("Sum of distances = %d\'-%.1f\"", dist3.feet, dist3.inch);
+
+    return 0;
+}
+
+
+
+
+3 soru
+#include<stdio.h>
+#include <string.h>
+int main()
+{
+    int i, j;
+    //read at most 100 words, and assume each word has 50 characters at most
+    char str[100][50], temp[50];
+    
+    //read 10 words from the user & store each word in the string array
+    for(i=0; i<10; ++i)
+        scanf("%s[^\n]",str[i]);
+    
+    //Bubble sort
+    for(i=0; i<9; ++i)
+        for(j=i+1; j<10 ; ++j)
+        {
+            //compare strings
+            if(strcmp(str[i], str[j])>0)
+            {
+            //replace string at location i with j
+                strcpy(temp, str[i]);
+                strcpy(str[i], str[j]);
+                strcpy(str[j], temp);
+            }
+        }
+    //print sorted list of words
+    for(i=0; i<10; ++i)
+    {
+        puts(str[i]);
+    }
+    return 0;
+}
+
+
+4 soru
+#include<stdio.h>
+
+//get the array from the user
+int M, N;
+
+// Function to check if all elements present in
+// descending diagonal starting from position
+// (i, j) in the matrix are all same or not
+int checkDiagonal(int mat[][N], int i, int j)
+{
+    int res = mat[i][j];
+    while (++i < M && --j >= 0) 
+    {
+        // mismatch found
+        if (mat[i][j] != res)
+            return 0;
+    }
+    // we only reach here when all elements
+    // in given diagonal are same
+    return 1;
+}
+ 
+// Function to check whether given 2D Array is a
+// TRBL or not
+int isTRBL(int mat[][N])
+{
+    // do for each element in first row
+    for (int i = N-1; i >= 0; i--) 
+    {
+        // check descending diagonal starting from
+        // position (0, j) in the matrix
+        if (!checkDiagonal(mat, 0, i))
+            return 0;
+    }
+ 
+    // do for each element in last column
+    for (int i = 1; i < M; i++) 
+    {
+        // check descending diagonal starting from
+        // position (i, 0) in the matrix
+        if (!checkDiagonal(mat, i, N-1))
+            return 0;
+    }
+ 
+    // we only reach here when each descending
+    // diagonal from left to right is same
+    return 1;
+}
+
+int main()
+{
+
+	scanf("%d %d",&M,&N);
+	int i, j;
+	int mat[M][N];
+	for(i = 0; i < M; i++){
+		for(j = 0; j < N; j++)
+			scanf("%d",&mat[i][j]);
+	}
+	
+	// Function call
+    if (isTRBL(mat))
+        printf("TRBL");
+    else
+        printf("NOT TRBL");
+}
+
+
+5 soru
+#include <stdio.h>
+int main() {
+   int rows, i, j, space;
+   scanf("%d", &rows);
+   char letter = 'A' + rows - 1;
+   for (i = rows; i >= 1; --i) {
+      for (space = 0; space < rows - i; ++space)
+         printf("  ");
+      for (j = i; j <= 2 * i - 1; ++j){
+         printf("%c ", letter); 
+      }
+      for (j = 0; j < i - 1; ++j){
+         printf("%c ", letter); 
+      }
+      --letter;
+      printf("\n");
+   }
+   return 0;
+}

@@ -1,0 +1,132 @@
+1 soru.
+#include <stdio.h>
+int main(){
+    int n,m,i,j,k=0,l=0;
+    printf("n m");
+    scanf("%d%d",&n,&m);
+    int arr1[n][n];
+    int arr2[m][m];
+     printf("arr1\n");
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            scanf("%d",&arr1[i][j]);
+        }
+    }
+     printf("arr2\n");
+    for(i=0;i<m;i++){
+        for(j=0;j<m;j++){
+            scanf("%d",&arr2[i][j]);
+        }
+    }
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+           if(arr1[i][j]==arr2[k][l]){
+                printf("%d, %d",i,j);
+                break;
+            }
+        }
+        if(arr1[i][j]==arr2[k][l]){
+            break;
+        }
+    }
+    return 0;
+}
+
+
+
+2 soru
+#include <stdio.h>
+int main(){
+    int num,i,j,m=1;
+    scanf("%d",&num);
+    for(i=1;i<=num;i++){
+       
+       for(j=m;j>0;j--){
+          printf("%d",2*j-1);
+          if(j==1){
+             ;
+          }else{
+              printf("-");
+          }
+        }
+       printf("\n"); 
+       m=m*2;
+    }  
+    return 0;
+}
+
+
+
+
+
+3soru
+#include <stdio.h> 
+int main(){
+    int m=0;
+    char let[100]; 
+    char *pointer;
+    fgets(let,100,stdin);
+    while(let[m]!='\0'){
+        if(let[m]==' '){
+            pointer = &let[m+1];
+        }
+        m++;
+    }
+    printf("%s",pointer);
+    return 0; 
+}
+
+3 soru pointersiz 
+#include <stdio.h> 
+int main(){
+    int m=0,n=0;
+    char let[100];   
+    fgets(let,100,stdin);
+    while(let[m]!='\0'){
+        if(let[m]==' '){
+           n=m;
+        }
+        m++;
+    }    
+    while(let[n+1]!='\0'){
+    printf("%c",let[n+1]);
+    n++;  
+    }
+    return 0; 
+}
+
+
+4 soru
+#include <stdio.h> 
+#define MAX 100 
+int main() 
+{ 
+    char word[MAX]; 
+
+    int i=0;
+    int count=0;
+    int knt1=0;
+    int knt0=0;
+
+    fgets(word, MAX, stdin);
+    
+    while(word[i]!='\0'){
+        if(word[i]=='1') {
+            knt1 =1;
+            if(knt0 ==1){
+                count++;
+            }
+            knt0 = 0;
+        }
+            
+        if(word[i]=='0' && knt1==1) 
+        knt0 = 1;
+        //010101
+        
+        i++;
+    }
+    
+    printf("%d",count);
+    
+    return 0; 
+}

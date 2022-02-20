@@ -1,0 +1,266 @@
+1 question
+#include <stdio.h>
+int main() {
+	int n = 0, arr[101], sum=0;
+	int sum_in = 0;
+	
+	char temp; 
+	do { 
+	  scanf("%d%c", &arr[n], &temp); 
+	  sum_in+=arr[n];
+	  n++; 
+	  
+	} while(temp != '\n'); 
+	
+	sum=(n-1)*(n)/2;
+	
+	printf("%d ",sum_in-sum);
+
+	return 0;
+}
+
+
+
+1 quesiton benim kod calışıyor
+#include <stdio.h>
+int main()
+    {
+        int m=0,n=0,i,j,arr[200];
+        char c;
+           j=0;
+           while(c!='\n')
+           {
+            scanf("%d",&arr[j]);
+            m+=arr[j];
+            c=getchar();
+            j++;
+           }
+           j--;
+            n=(((j)*(j+1))/2);
+            m=m-n;
+            printf("%d",m);
+        return 0;
+    }
+
+
+
+
+
+
+
+2.question
+#include <stdio.h>
+typedef struct mesafe{
+   int fet;
+   float inc;
+} m;
+
+int main(){
+    m gs1,gs2,sum ;
+   scanf("%d%f",&gs1.fet,&gs1.inc);
+   scanf("%d%f",&gs2.fet,&gs2.inc);
+   sum.fet = gs1.fet+gs2.fet;
+   sum.inc = gs1.inc+gs2.inc;
+   while (sum.inc>=12.0) {
+      sum.inc=sum.inc-12.0;
+      ++sum.fet;
+   }
+   
+   printf("Sum of distances = %d\'-%.1f\"",sum.fet,sum.inc);
+   return 0;
+}
+
+
+
+
+
+
+3.question
+#include<stdio.h>
+#include <string.h>
+int main()
+{
+    int i, j;
+    char str[10][50], exp1[50];
+    for(i=0;i<10;i++){
+        fgets(str[i],sizeof(str[i]), stdin);
+    }
+    for(i=0; i<9; ++i){
+        for(j=i+1; j<10 ; ++j)
+        {
+            if(strcmp(str[i],str[j])>0){
+            strcpy(exp1,str[i]);
+            strcpy(str[i],str[j]);
+            strcpy(str[j],exp1);    
+            }
+        }
+    }
+    for(i=0; i<10; ++i)
+    {
+         printf("%s",str[i]);
+    }
+    return 0;
+}
+
+
+
+
+
+
+4.question
+#include<stdio.h>
+hocanın cözümü
+//get the array from the user
+int M, N;
+
+// Function to check if all elements present in
+// descending diagonal starting from position
+// (i, j) in the matrix are all same or not
+int checkDiagonal(int mat[][N], int i, int j)
+{
+    int res = mat[i][j];
+    while (++i < M && --j >= 0) 
+    {
+        // mismatch found
+        if (mat[i][j] != res)
+            return 0;
+    }
+    // we only reach here when all elements
+    // in given diagonal are same
+    return 1;
+}
+ 
+// Function to check whether given 2D Array is a
+// TRBL or not
+int isTRBL(int mat[][N])
+{
+    // do for each element in first row
+    for (int i = N-1; i >= 0; i--) 
+    {
+        // check descending diagonal starting from
+        // position (0, j) in the matrix
+        if (!checkDiagonal(mat, 0, i))
+            return 0;
+    }
+ 
+    // do for each element in last column
+    for (int i = 1; i < M; i++) 
+    {
+        // check descending diagonal starting from
+        // position (i, 0) in the matrix
+        if (!checkDiagonal(mat, i, N-1))
+            return 0;
+    }
+ 
+    // we only reach here when each descending
+    // diagonal from left to right is same
+    return 1;
+}
+
+int main()
+{
+
+	scanf("%d %d",&M,&N);
+	int i, j;
+	int mat[M][N];
+	for(i = 0; i < M; i++){
+		for(j = 0; j < N; j++)
+			scanf("%d",&mat[i][j]);
+	}
+	
+	// Function call
+    if (isTRBL(mat))
+        printf("TRBL");
+    else
+        printf("NOT TRBL");
+}
+
+
+
+
+
+
+
+5.question
+#include <stdio.h>
+void gel(int sayi);
+int main(){
+ int num;
+ scanf("%d",&num);
+gel(num);
+    return 0;
+}
+void gel(int sayi){
+    int i,j;
+    char m[100],ch;
+    ch='A';
+    for(i=0;i<sayi;i++){
+        m[i]=ch;
+        ch++;
+    }
+    
+    for(i=sayi;i>0;i--){
+        for(j=0;j<sayi-i;j++){
+            printf("  ");
+        }
+        for(j=0;j<i*2-1;j++){
+            printf("%c ",m[i-1]);
+        }
+        
+        printf("\n");
+    }
+   
+}
+
+
+
+
+
+
+
+4.question da benim kodum calışmadı hiddenlerde,bir kaç degişiklik 
+yaptım sınavdan sonra calıştı codeblock ta.bu kod yanlış aga komple degişikligi felan unut
+#include <stdio.h>
+#include <stdio.h>
+
+int main(){
+    int arr[100][100],i,j,b=1,arr1[10][10];
+    long int row,col;
+    scanf("%ld%ld",&row,&col);
+    for(i=0;i<row;i++){
+        for(j=0;j<col;j++){
+        scanf("%d",&arr[i][j]);
+        }
+    }
+    for(i=0;i<row;i++){
+        for(j=0;j<col;j++){
+            arr1[j][i]=arr[i][j];
+        }
+    }
+    for(i=0;i<row-1;i++){
+        for(j=1;j<col;j++){
+        if(arr[i][j]==arr1[j][i]){
+            b*=1;
+        }else{
+            b*=-1;
+            break;
+        }
+        }
+        if(arr[i][j]!=arr[j][i]){
+            break;
+        }
+    }
+    for(i=0;i<row;i++){
+        for(j=0;j<col;j++){
+              printf("%d ",arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    if(b==1){
+        printf("\nTRBL");
+    }else if(b==-1){
+        printf("\nNOT TRBL");
+    }
+    return 0;
+}
