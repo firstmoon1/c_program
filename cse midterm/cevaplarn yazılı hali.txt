@@ -1,0 +1,204 @@
+1.soru
+#include<stdio.h>
+int main(){
+   int knife=7,bullet,grenade,a,b;
+   scanf("%d%d",&bullet,&grenade);
+   a=7+bullet*1+grenade*4;//min
+   b=7+bullet*3+grenade*9;
+   printf("%d %d",a,b);
+
+
+return 0;
+}
+
+
+
+
+
+2.soru
+#include<stdio.h>
+int main(){
+   int a1,a5,a10,a25,a50,sum=0,num;
+   scanf("%d",&num);
+while(num){
+    if(num>=50){
+      num-=50;
+      sum++;
+    }else if(num>24 && num<50){
+    num-=25;
+    sum++;
+    }else if(num>9 && num<25){
+    num-=10;
+    sum++;
+    }else if(num>4 && num<10){
+    num-=5;
+    sum++;
+    }else if(num>0 && num<5){
+    num-=1;
+    sum++;
+    }
+}
+printf("%d",sum);
+return 0;
+}
+
+
+
+
+
+3 soru.
+bu 0 ile 9 arası için 10 yazarsan   saçmalar
+#include<stdio.h>
+int main(){
+   int num,i,j,b;
+   scanf("%d",&num);
+   b=num;
+   for(i=0;i<num;i++){
+        for(j=0;j<b;j++){
+            if(i==0 || j==0 || j==b-1 || i==num-1){
+              printf("%d",num);
+            }else if(i==1 || j==1 || j==b-2 || i==num-2){
+            printf("%d",num-1);
+            }else if(i==2 || j==2 || j==b-3 || i==num-3){
+            printf("%d",num-2);
+            }else if(i==3 || j==3 || j==b-4 || i==num-4){
+            printf("%d",num-3);
+            }else if(i==4 || j==4 || j==b-5 || i==num-5){
+            printf("%d",num-4);
+            }
+        }
+        printf("\n");
+   }
+return 0;
+}
+
+
+3 soru asıl cözüm. hocanınki
+9
+999999999
+988888889
+987777789
+987666789
+987656789
+987666789
+987777789
+988888889
+999999999
+hocannın cözdügü aslında olan
+#include<stdio.h>
+    int max(int a,int b,int c,int d){
+    if(a>=b && a>=c && a>=d)
+        return a;
+    if(b>=a && b>=c && b>=d)
+        return b;
+    if(c>=b && c>=a && c>=d)
+        return c;
+    return d;
+    }
+    int main(){
+    int i,j,dimension;
+    scanf("%d",&dimension);        //dimension=9
+    for(i=1;i<=dimension;i++){     //a=i= 5
+        for(j=1;j<=dimension;j++){ //b=j= 1,2,3,4,5,6,7,8,9
+            int a= dimension-i+1;  //c=a= 5
+            int b= dimension-j+1;  //d=b= 9,8,7,6,5,4,3,2,1
+            printf("%d",max(i,j,a,b));
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+
+
+
+4.soru
+#include<stdio.h>
+int main(){
+   char ch,h,s,v,H=0,S=0,V=0;
+   /*scanf("%c",&ch); scanf burda olmuyor abi
+   cünkü character alıyorsun ve tek tek isleme
+   geciriyor bütün halinde degil,harf harf yani
+   do while de  burda hep hsv geldigi için
+    başa geri dönüyor
+   */
+   do{
+       scanf("%c",&ch);
+        if(ch=='H'){
+            ++H;
+        }else if(ch=='S'){
+            ++S;
+        }else if(ch=='V'){
+            ++V;
+        }else {break;}
+   }while(ch=='H' || 'S' || 'V');
+   for(h=0;h<H;h++){
+    printf("H");
+   }
+    for(s=0;s<S;s++){
+    printf("S");
+   }
+    for(v=0;v<V;v++){
+    printf("V");
+   }
+return 0;
+}
+
+
+
+5.soru
+#include<stdio.h>
+int c(int b , int c){
+int result;
+result=(b<0 && c>=0) || (c<0 && b>=0) ;
+return result;
+}
+int main(){
+ int a,b;
+    scanf("%d%d",&a,&b);
+    printf("%d",c(a,b));
+return 0;
+}
+
+/* yada böyle yaparsın
+#include <stdio.h>
+int main(){
+    int a,b;
+    scanf("%d%d",&a,&b);
+    printf("%d",(a^b)<0); //şu a'b -1 ve 3 yazdın -4 gösterir
+            // 3 ve 4 yazdın 7 gösterir  <0 da kücük olması durumunda
+            //1  diger türlü 0 gösterir.
+    return 0;
+}
+*/
+
+
+
+
+
+6.soru
+#include<stdio.h>
+int main(){
+double sayi1,sayi2;
+char ch;
+scanf("%c%lf%lf",&ch,&sayi1,&sayi2);
+switch(ch){
+    case '+':
+        printf("%.1f + %.1f =%.1f\n",sayi1,sayi2,sayi1+sayi2);
+        break;
+    case '-':
+        printf("%.1f - %.1f =%.1f\n",sayi1,sayi2,sayi1-sayi2);
+        break;
+    case '*':
+        printf("%.1f * %.1f =%.1f\n",sayi1,sayi2,sayi1*sayi2);
+        break;
+    case '/':
+        printf("%.1f / %.1f =%.1f\n",sayi1,sayi2,sayi1/sayi2);
+        break;
+}
+return 0;
+}
+
+
+
+
