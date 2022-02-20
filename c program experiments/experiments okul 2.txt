@@ -1,0 +1,2486 @@
+
+
+
+
+
+
+
+
+
+lab1 question 6
+#include <stdio.h>
+int main(){
+int data[5];
+
+    scanf("%d",data+1);
+    printf("%d",*(data+1)); // yada data[1]		
+}
+
+
+
+
+
+
+
+
+
+
+lab1 question 7
+#include <stdio.h>
+int main()
+{
+  int i, classes[6],sum = 0;
+  for(i = 0; i < 6; ++i)
+  {
+      // (classes + i) is equivalent to &classes[i]
+      scanf("%d",(classes + i));
+      // *(classes + i) is equivalent to classes[i]
+      sum += *(classes + i);
+  }
+  printf("%d", sum);
+  return 0;
+}
+
+
+
+
+
+lab1 question 8
+/*
+onlinesiteler.com da bu işe yaramıyor sebep 64 bit ile 32 bit nasıl desem
+long int ile int arasındaki fark sebebi ile,yani bu adreslerde (int) yerine
+(long) yapmak gerek bunlar ile degiştirilirse olur diyor hoca,codeblock ta calışıyor 
+her iki versiyonda
+printf("%ld\n",(long)(data+1)); // Print the address of second element from data as an integer
+printf("%ld\n",(long)(data+2)); // Print the address of third element from data as an integer
+
+printf("%ld\n",(long)(datac+1)); // Print the address of second element from datac as an integer
+printf("%ld\n",(long)(datac+2)); // Print the address of third element from datac as an integer
+
+*/
+
+#include <stdio.h>
+int main(){
+	int data[5];
+	char datac[4];
+	datac[0]='C';
+
+    scanf("%d",data+1);
+    printf("%d\n",(int)(data+1)); // Print the address of second element from data as an integer
+    printf("%d\n",(int)(data+2)); // Print the address of third element from data as an integer
+    printf("%d\n",*(data+1)); // Print the integer value of second element from data array by 'dereferencing' (using address and *)
+
+    scanf(" %c",datac+1);
+    printf("%c\n",*(datac+1)); // Print the char value of second element by 'dereferencing' (using address and *)
+    printf("%c\n",*datac+2); // Add 2 to char value of first element by 'dereferencing' and print
+    printf("%d\n",(int)(datac+1)); // Print the address of second element from datac as an integer
+    printf("%d\n",(int)(datac+2)); // Print the address of third element from datac as an integer
+    printf("%c\n",*datac); // Print the first char from datac by 'dereferencing' (using address and *)
+    return 0;
+}
+ 
+
+
+
+
+
+week 3  slaytinda sayfa 13 deki fraction integer kısmı
+#include <stdio.h>
+#include <math.h>
+void separate(double num,char *ch,int *whole,double *frac){
+double mag;
+if(num<0){
+    *ch=='-';
+}else if(num==0){
+    *ch==' ';
+}else{
+    *ch='+';
+}
+mag=fabs(num);
+*whole=floor(mag);
+*frac=mag-*whole;
+}
+int main(){
+int wh1;
+char ch1;
+double value,fr;
+printf("first scanf\n");
+scanf("%lf",&value);
+separate(value,&ch1,&wh1,&fr);
+printf("number=%d\n"
+       "char=%c\n"
+       "integer=%.2f\n"
+       "fraction=%.2f\n",wh1,ch1,value,fr);
+return 0;
+}
+
+
+
+
+
+lab2 question1
+#include <stdio.h>
+void fuc(int *p){
+    (*p)++;
+}
+int main(){
+    int num;
+    scanf("%d",&num);
+    fuc(&num);
+    printf("%d",num);
+    
+    return 0;
+}
+
+
+
+
+
+lab2 question2
+#include <stdio.h>
+void f(int **in) {
+  (**in)++;
+}
+int main() {
+  int i;
+  scanf("%d",&i);
+  int *iPtr = &i;
+  int **jPtr= &iPtr;
+  f(jPtr);
+  printf("%d", i);
+  return 0;
+}
+
+
+
+
+lab2 question3
+#include <stdio.h>
+void fuc(int *p,int *p1){
+   int temp;
+   temp=*p;
+   *p=*p1;
+   *p1=temp;
+}
+int main(){
+    int num=5,num1=10;
+    //scanf("%d %d",&num,&num1);
+    int *m=&num;
+    int *m1=&num1;
+    fuc(m,m1);
+    printf("%d\n%d",num,num1);
+    
+    return 0;
+}
+
+
+
+lab2 question4
+#include <stdio.h>
+#include <string.h>
+struct Student{
+	char name[50]; //Student ID as an integer
+        int num;       //Char array, i.e. string as the student name
+};
+int main(){
+	struct Student student1;   //create student1
+        struct Student student2;   //create student2
+        student1.num=1020;         //set student-1's ID as 1020
+	student2.num=1021;         //set student-2's ID as 1021
+	
+	strcpy(student1.name,"Ali");   //set student-1's name as Ali
+	strcpy(student2.name,"Veli");  //set student-2's name as Veli
+	
+	//print information about student-1
+	printf("Student-1 name: %s and ID: %d\n",student1.name,student1.num);
+	
+	//print information about student-2
+        printf("Student-2 name: %s and ID: %d",student2.name,student2.num);
+}
+
+
+
+
+lab2 question5
+#include <string.h>
+#include <stdio.h>
+typedef struct fuc{
+    int books;
+}man;
+int main(){
+    man book1,book2;
+    book1.books=1213;
+    book2.books=1214;
+    printf("%d\n%d",book1.books,book2.books);
+    return 0;
+}
+
+
+
+
+lab2 question6
+#include <stdio.h>
+#include <string.h>
+struct Books{
+	char  title[50];
+};
+int main(){
+	struct Books Book1;
+	struct Books Book2;
+	strcpy( Book1.title, "C Programming");
+	strcpy( Book2.title, "C++ Programming");
+	printf("%s",Book1.title);
+	printf("\n%s",Book2.title);
+}
+
+
+lab2 question7
+/*
+bazen bu strlen leri printflerden %d yerine %zu yazılıyor
+lakin aynı şey ben hata almıyorum.internette %zu dogru olanıymıs
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str1[] = "abcd", str2[] = "abCd", str3[] = "abcd";
+    char str4[18] = "This is ", str5[] = "Spartaaaa!";
+    char str6[20]="Program";
+    char str7[20]={'P','r','o','g','r','a','m','\0'};
+    int result;
+
+    // comparing strings str1 and str2
+    result = strcmp(str1, str2);
+    printf("strcmp(str1, str2) = %d\n", result);
+
+    // comparing strings str1 and str3
+    result = strcmp(str1, str3);
+    printf("strcmp(str1, str3) = %d\n", result);
+    
+    // concatenates str4 and str5
+    // the resultant string is stored in str4.
+    strcat(str4, str5);
+
+    puts(str4);
+    puts(str5);
+
+    // using the %zu format specifier to print size_t
+    printf("Length of string str6 = %zu \n",strlen(str6));
+    printf("Length of string str7 = %zu \n",strlen(str7));
+
+    return 0;
+}
+
+
+
+
+
+lab3 question 1
+#include <stdio.h>
+typedef struct complex
+{
+    float real;
+    float imag;
+} alfa;
+alfa add(alfa n1,alfa n2);
+
+int main()
+{
+    alfa n1, n2, temp;
+    scanf("%f %f", &n1.real, &n1.imag);
+    scanf("%f %f", &n2.real, &n2.imag);
+    temp=add(n1, n2);
+    printf("Sum = %.1f + %.1fi", temp.real, temp.imag);
+
+    return 0;
+}
+alfa add(alfa n1, alfa n2)
+{
+      alfa temp;
+      temp.real = n1.real + n2.real;
+      temp.imag = n1.imag + n2.imag;
+      return(temp);
+}
+
+
+
+
+
+lab3 question 2
+#include <stdio.h>
+typedef struct exp1{
+    int age;
+    float weight;
+}man;
+/*int main(){
+    man p={32,74.5},*ptr;
+    ptr=&p;
+    
+   // scanf("%d%f",&p.age,&p.weight);
+    printf("%d %f",(*ptr).age,(*ptr).weight);
+    
+    return 0;
+}
+*/
+int main(){
+    man p,*ptr;
+    ptr=&p;
+    
+    scanf("%d%f",&(*ptr).age,&(*ptr).weight);
+    /*
+    eger sen scanf de & ve * beraber kullanırsan birbirlerini 
+    yok ederler mesela &*p gibi,adres verir yani,içerik vermez,
+    struct pointerinde parantez ile alım yapabilirsin.yukarıda 
+    yaptıgım gibi.
+    */
+    printf("%d %f",(*ptr).age,(*ptr).weight);
+    /*
+    yukarıda gördügün gibi struc pointerlerini yazdırabiliriz
+    (*ptr).age gibi.
+
+    */
+    return 0;
+}
+
+
+
+
+
+
+
+lab3 question 3
+#include <stdio.h>
+struct distance
+{
+    int feet;
+    float inch;
+};
+void add(struct distance d1,struct distance d2, struct distance *d3); 
+int main()
+{
+    struct distance dist1, dist2, dist3;
+    scanf("%d", &dist1.feet);
+    scanf("%f", &dist1.inch);
+
+    scanf("%d", &dist2.feet);
+    scanf("%f", &dist2.inch);
+
+    add(dist1, dist2, &dist3); 
+
+    //passing structure variables dist1 and dist2 by value whereas passing structure variable dist3 by reference
+    printf("Sum of distances = %d\'-%.1f\"", dist3.feet, dist3.inch);
+
+    return 0;
+}
+void add(struct distance d1,struct distance d2, struct distance *d3) 
+{
+     //Adding distances d1 and d2 and storing it in d3
+     d3->feet = d1.feet + d2.feet; 
+     d3->inch = d1.inch + d2.inch;
+
+     if (d3->inch >= 12) {     /* if inch is greater or equal to 12, converting it to feet. */
+         d3->inch -= 12;
+         ++d3->feet;
+    }
+}
+
+
+
+
+
+lab3 question 4
+#include <stdio.h>
+typedef struct time{
+    int hour;
+    int min;
+    int sec;
+    
+}man;
+int main(){
+    man n1,n2,n3,*p1,*p2,*p3;
+    p1=&n1;
+    p2=&n2;
+    p3=&n3;
+    scanf("%d %d %d",&(*p1).hour,&(*p1).min,&(*p1).sec);
+    scanf("%d %d %d",&(*p2).hour,&(*p2).min,&(*p2).sec);
+    (*p3).hour=(*p1).hour-(*p2).hour;
+    (*p3).min=(*p1).min-(*p2).min;
+    (*p3).sec=(*p1).sec-(*p2).sec;
+    printf("%d:%d:%d",(*p3).hour,(*p3).min,(*p3).sec);
+    /*
+    abi parantez sart ya *p3.hour felan yapınca sapıtıyor 
+    compiler. yani (*p3).hour yapmak gerek ,aynı sekilde
+    scanf içinde gecerli parantez şart
+    yada p3->hour felan aynı şey bunlar.
+    */
+    return 0;
+}
+
+
+
+
+
+
+lab3 question 4 hocanın cözümü
+#include <stdio.h>
+typedef struct time{
+    int hour;
+    int min;
+    int sec;
+    
+}man;
+int main(){
+    man n1,n2,n3,*p1,*p2,*p3;
+    p1=&n1;
+    p2=&n2;
+    p3=&n3;
+    scanf("%d %d %d",&(*p1).hour,&(*p1).min,&(*p1).sec);
+    scanf("%d %d %d",&(*p2).hour,&(*p2).min,&(*p2).sec);
+    (*p3).hour=(*p1).hour-(*p2).hour;
+    (*p3).min=(*p1).min-(*p2).min;
+    (*p3).sec=(*p1).sec-(*p2).sec;
+    printf("%d:%d:%d",(*p3).hour,(*p3).min,(*p3).sec);
+    /*
+    abi parantez sart ya *p3.hour felan yapınca sapıtıyor 
+    compiler. yani (*p3).hour yapmak gerek ,aynı sekilde
+    scanf içinde gecerli parantez şart
+    yada p3->hour felan aynı şey bunlar.
+    */
+    return 0;
+}
+
+
+
+
+
+
+
+lab3 question 5
+#include <stdio.h>
+#include <stdlib.h>
+/*
+int main(){
+   int *p=(int*)malloc(5*sizeof(int*));
+   p[0]=1585323;
+   printf("%d",p[0]);
+    return 0;
+}
+*/
+int main(){
+   int *p=(int*)malloc(5*sizeof(int));
+   *p=1585323;
+   printf("%d",*(p));
+    return 0;
+}
+/*
+malloc(5*sizeof(int)); yada malloc(5*sizeof(int*));
+farketmiyor ikiside calışıyor
+*/
+
+
+
+
+
+
+lab3 question 6
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+   int *p=(int*)calloc(3,3*sizeof(int*));
+  printf("%d",*(p+4));
+    return 0;
+}
+/*
+şimdi bu p yi tanımladın eyv, p+0 p + 100 
+farketmiyor tabi sınırı var ama, hepsi sıfır calloc 
+da yani fark etmez.
+*/
+
+
+
+
+
+
+
+lab3 question 7
+#include <stdio.h>
+#include <stdlib.h>
+struct person{
+    int age;
+    int weight;
+};
+int main(){
+   int num,i;
+   scanf("%d",&num);
+    struct person  *p;
+    p=(struct person*)malloc(num*sizeof(struct person));
+    for(i=0;i<num;i++){
+   scanf("%d%d",&(p+i)->age,&(p+i)->weight);
+    }
+    for(i=0;i<num;i++){
+    printf("%d %d\n",(p+i)->age,(p+i)->weight);
+    }
+   
+   
+    return 0;
+}
+
+
+
+
+
+
+
+
+lab4 question 1
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct fuc{
+    int num;
+    struct fuc *next;
+}man;
+int main(){
+    man *p=NULL;
+    p=malloc(sizeof(man));
+    if(p==NULL){
+        return 1;
+    }
+    (*p).num=1;
+    p->next=malloc(sizeof(struct fuc));
+    p->next->num=2;
+    p->next->next=NULL;
+    printf("%d %d",p->num,p->next->num);
+    return 0;
+}
+
+
+
+
+
+
+
+lab4 question 2   bizim cözüm
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+typedef struct fuc{
+    int num;
+    struct fuc *next;
+}man;
+int main(){
+    man *p=NULL;
+    p=malloc(sizeof(man*));
+   p->num=10;
+   p->next=(man*)malloc(sizeof(man));
+   p->next->num=20;
+   p->next->next=malloc(sizeof(man*));
+   p->next->next->num=30;
+   p->next->next->next=malloc(sizeof(man*));
+   p->next->next->next->num=40;
+   printf("%d %d %d %d",p->num, p->next->num,p->next->next->num,p->next->next->next->num);
+    return 0;
+}
+
+
+
+
+
+lab4 question 2  hocanın cözümü
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct fuc{
+    int num;
+    struct fuc *next;
+};
+void function(struct fuc *ptr){
+    struct fuc *ptr1;
+    ptr1=ptr;
+    while(ptr1!=NULL){
+        printf("%d ",ptr1->num);
+        ptr1=ptr1->next;
+    }
+}
+int main(){
+    struct fuc n1,n2,n3,n4;
+    (&n1)->num=10;
+    n2.num=20;
+    n3.num=30;
+    n4.num=40;
+    
+    n1.next=&n2;
+    n2.next=&n3;
+    n3.next=&n4;
+    n4.next=NULL;
+    function(&n1);
+    
+    return 0;
+}
+
+
+
+
+
+lab4 question 3  hocanın cözümü
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+	int val;
+	struct node *next;
+	
+}Node;
+
+typedef Node* NodePtr;
+
+void printList(Node * headNode);
+
+int main(){
+
+    NodePtr head = NULL;
+    
+    /*create head node*/
+    head = malloc(sizeof(Node));
+    head->val = 1;
+    /*create second node*/
+    head->next = malloc(sizeof(Node));
+    head->next->val = 2;
+    head->next->next = NULL;
+    /*create third node*/
+    head->next->next= malloc(sizeof(Node));
+    head->next->next->val = 3;
+    head->next->next->next = NULL;
+    
+    /*print the list having three nodes with the value of 1, 2 and 3 respectively*/
+    printList(head);
+    
+    /*update second last node*/
+    (head->next)->val=5;
+    
+    /*update last node*/
+    (head->next->next)->val=6;
+    
+    /*print the list having three nodes with the value of 1, 5 and 6 respectively*/
+    printList(head);
+    	
+    return 0;
+}
+
+void printList(Node * headNode){
+	Node * iter;
+	iter=headNode;
+	
+	while(iter !=NULL ){
+		printf("%d ",iter->val);
+		iter=iter->next;
+	}
+	printf("\n");
+}
+
+
+
+
+lab4 question 4  hocanın cözümü
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+	int val;
+	struct node *next;
+	
+}Node;
+
+typedef Node *NodePtr;
+
+void printlist(Node * headNode);
+void function(Node ** head, int a);
+
+int main(){
+	Node * head = NULL;
+	head = malloc(sizeof(Node));
+	/*Set the value of head as 10*/
+	head->val=10;
+	
+	/*Last node must point to NULL*/
+	head->next=NULL;
+
+
+	/*print the list having one node with the value of 10*/
+	printlist(head);
+	
+	/*Add a new element to the beginning of the list with value of 20*/
+	function(&head,20);
+	
+	/*Add a new element to the beginning of the list with value of 30*/
+	function(&head,30);
+	
+	/*Add a new element to the beginning of the list with value of 40*/
+	function(&head,40);
+	
+	/*Add a new element to the beginning of the list with value of 50*/
+	function(&head,50);
+    
+    /*Add a new element to the beginning of the list with value of 60*/
+	function(&head,60);
+
+	/*print the list having six nodes with the value of 60, 50, 40, 30, 20 and 10 respectively*/
+	printlist(head);
+
+	return 0;
+}
+
+void printlist(Node * headNode){
+	Node * iter;
+	iter=headNode;
+		
+	while(iter !=NULL ){		
+		printf("%d ",iter->val);
+		iter=iter->next;			
+	}
+    printf("\n");
+}
+
+/*Complete the following function to add a new node to
+the beginning of the list*/
+void function(Node ** head, int a) {
+  
+   NodePtr p;
+   // Node *p; aynı şey yukarıdaki ile
+   p=malloc(sizeof(Node));
+   p->val=a;
+   p->next=*head;
+   *head=p;
+    
+        
+}
+
+
+
+lab4 question 5 hocanın cözümü
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+	int val;
+	struct node *next;
+	
+}Node;
+
+typedef Node* NodePtr;
+
+void printList(Node * headNode);
+void add_val_to_the_beginning(Node ** head, int a);
+
+int main(){
+	Node * Head = NULL;
+	Head = malloc(sizeof(Node));
+	/*Set the value of head as 10*/
+	Head->val=10;
+	
+	/*Last node must point to NULL*/
+	Head->next=NULL;
+
+
+	/*print the list having one node with the value of 10*/
+	printList(Head);
+	
+	/*Add a new element to the beginning of the list with value of 20*/
+	add_val_to_the_beginning(&Head,20);
+	/*Add a new element to the beginning of the list with value of 30*/
+	add_val_to_the_beginning(&Head,30);
+	/*Add a new element to the beginning of the list with value of 40*/
+	add_val_to_the_beginning(&Head,40);
+	/*Add a new element to the beginning of the list with value of 50*/
+	add_val_to_the_beginning(&Head,50);
+	/*Add a new element to the beginning of the list with value of 60*/
+	add_val_to_the_beginning(&Head,60);
+
+	/*printf("\n\nAfter adding new elements");*/
+	/*print the list having six nodes with the value of 60, 50, 40, 30, 20 and 10 respectively*/
+	printList(Head);
+
+	return 0;
+}
+
+/*Complete the following function to add a new node to
+the beginning of the list*/
+void printList(Node * headNode){
+	Node * iter;
+	iter=headNode;
+		
+	while(iter !=NULL ){		
+		printf("%d ",iter->val);
+		iter=iter->next;			
+	}
+    printf("\n");
+}
+
+
+void add_val_to_the_beginning(Node ** head, int a) {
+   
+    NodePtr newNode;
+    newNode=malloc(sizeof(Node));
+    
+    newNode->val=a;
+    newNode->next= *head;
+    *head=newNode;    
+}
+
+
+
+
+
+
+
+
+
+
+lab5 question 1
+
+Expected
+10 30 40 50 60
+Got
+10 30 40 50 60
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+	int val;
+	struct node *next;
+	
+}Node;
+
+typedef Node* NodePtr;
+
+void printList(Node * headNode);
+void insert(Node **sPtr, int n);
+
+int main(){
+	Node * Head = NULL;
+	
+	/*Insert node with the value of 30*/
+	insert(&Head,30);
+	
+	/*Insert node with the value of 10*/
+	insert(&Head,10);
+	
+	/*Insert node with the value of 50*/
+	insert(&Head,50);
+	
+	/*Insert node with the value of 40*/
+	insert(&Head,40);
+	
+	/*Insert node with the value of 60*/
+	insert(&Head,60);
+	
+	/*print the whole list*/
+	printList(Head);
+
+	return 0;
+}
+
+void printList(Node * headNode){
+	Node * iter;
+	iter=headNode;
+		
+	while(iter !=NULL ){		
+		printf("%d ",iter->val);
+		iter=iter->next;			
+	}
+    printf("\n");
+}
+
+
+/*Complete the following function to insert a new node to
+the proper location for ascending order*/
+void insert(Node **sptr,int n){
+	NodePtr newptr;
+	NodePtr previousptr;
+	NodePtr currentptr;
+    
+    /*Allocate memory location for the node to be inserted
+    It should be pointed to by newPtr*/
+    newptr=malloc(sizeof(Node));
+
+    if(newptr !=NULL){
+    
+    	newptr->val = n;
+    	newptr->next=NULL;
+    
+    	currentptr=*sptr;
+    	previousptr=NULL;
+        
+        /*Try to arrive the correct location*/    
+    	while(currentptr != NULL && (currentptr->val) < n ){
+    		previousptr=currentptr;
+    		currentptr=currentptr->next;
+    		
+    	}  //we arrived the true node
+    
+    	//if no node in the list, then insert new node at the beginning of list
+    	if(previousptr == NULL){
+    		newptr->next=*sptr;
+    	    *sptr=newptr;
+    	}
+    	else{ //otherwise, put the node in the correct order
+    	//ya böyle yaparsın baglantı kopmasın diye
+    	//burda kopmuyor cünkü  baglantı hala sptr da var
+    	//burdaki kukla yani
+    	    Node *temp;
+    	    temp=previousptr->next;
+    		previousptr->next=newptr;
+    	    newptr->next=temp;
+    		/*yada böyle yaparsın hocanın cözümü
+    		previousptr->next=newptr;
+    		newptr->next=currentptr;
+    		*/
+    	}
+
+    }
+    else
+        printf( "%c not inserted. No memory available.\n", n );
+}
+
+
+
+
+
+
+
+
+lab5 question 2
+
+Expected
+After adding new elements: 10
+After removing first element:
+Got
+After adding new elements: 10
+After removing first element:
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+	int val;
+	struct node *next;
+	
+}Node;
+
+typedef Node *NodePtr;
+
+void printList(Node * headNode);
+void remove_first_element(Node ** alfa);
+
+int main(){
+	Node * head = NULL;
+	
+	/*Allocate memory for head node*/
+    head=malloc(sizeof(Node));
+    /*Assign the value of head node as 10*/
+    (*head).val=10;
+    /*
+    egerki sayılar eklemek istiyorsan bunlar yeterli,
+    birde alltaki head->next=NULL; una //  ekle.
+    head->next=malloc(sizeof(Node));
+    head->next->val=20;
+    head->next->next=NULL;
+    */
+    /*Head node is also the last node for now*/
+    
+    head->next=NULL;
+    
+    printf("After adding new elements: ");
+    /*print the whole list*/
+    printList(head);
+    
+    
+    remove_first_element(&head);
+    printf("After removing first element: ");
+    /*print the whole list*/
+    printList(head);
+
+	return 0;
+}
+
+void printList(Node * headNode){
+	Node * iter;
+	iter=headNode;
+		
+	while(iter !=NULL ){		
+		printf("%d  ",iter->val);
+		iter=iter->next;			
+	}
+    printf("\n");
+}
+
+/*Complete the following function to remove the first node from the list*/
+void remove_first_element(Node ** alfa){
+NodePtr temp;
+temp=(*alfa)->next;
+free(*alfa);
+*alfa=temp;
+}
+
+
+
+
+
+
+lab5 question 3
+
+Expected	
+After adding new elements: 60 50 40 30 20 10
+After removing last element: 60 50 40 30 20
+Got	
+After adding new elements: 60 50 40 30 20 10
+After removing last element: 60 50 40 30 20
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+	int val;
+	struct node *next;
+
+}Node;
+
+typedef Node* NodePtr;
+
+void printList(Node * headNode);
+void add_val_to_the_beginning(Node ** head, int a);
+void remove_last(Node **head);
+
+int main(){
+
+    Node * Head = NULL;
+    /*Allocate memory for head node*/
+    Head = malloc(sizeof(Node));
+    /*Assign the value of head node as 10*/
+    Head->val=10;
+    /*Head node is also the last node for now*/
+    Head->next=NULL;
+
+    add_val_to_the_beginning(&Head,20);
+    add_val_to_the_beginning(&Head,30);
+    add_val_to_the_beginning(&Head,40);
+    add_val_to_the_beginning(&Head,50);
+    add_val_to_the_beginning(&Head,60);
+
+    printf("After adding new elements: ");
+    printList(Head);
+
+    remove_last(&Head);
+    printf("After removing last element: ");
+    printList(Head);
+
+}
+void printList(Node *headNode){
+	Node * iter;
+	iter=headNode;
+
+	while(iter !=NULL ){
+		printf("%d ",iter->val);
+		iter=iter->next;
+	}
+    printf("\n");
+}
+
+void add_val_to_the_beginning(Node ** head, int a){
+
+    NodePtr newNode;
+    newNode=malloc(sizeof(Node));
+
+    newNode->val=a;
+    newNode->next= *head;
+    *head=newNode;
+}
+
+void remove_last(Node **head) {
+    Node  *p, *q;
+    p = *head;
+
+    /* if there is only one item in the list, remove it */
+    if (p->next == NULL) {
+        free(p);
+    }
+    else{
+
+        /*Find the second last node*/
+        while (p->next != NULL)
+        {
+            q=p;
+            p=p->next;
+        }
+        /* p->next becomes NULL, we are at the second last node*/
+        free(q->next);// or free(p); aynı seyler.
+        q->next=NULL;
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+lab5 question 4
+
+Expected	
+After adding new elements: 60 50 40 30 20 10
+After removing the element: 60 50 30 20 10
+Got
+After adding new elements: 60 50 40 30 20 10
+After removing the element: 60 50 30 20 10
+
+
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node {
+	int val;
+	struct node *next;
+}Node;
+typedef Node* NodePtr;
+void printList(Node * headNode);
+void add_val_to_the_beginning(Node ** head, int a);
+void remove_by_index(Node ** sPtr, int n);
+
+int main(){
+    Node * Head = NULL;
+    /*Allocate memory for head node*/
+    Head=malloc(sizeof(Node));
+    /*Assign the value of head node as 10*/
+    Head->val=10;
+    /*Head node is also the last node for now*/
+    Head->next=NULL;
+
+    add_val_to_the_beginning(&Head,20);
+    add_val_to_the_beginning(&Head,30);
+    add_val_to_the_beginning(&Head,40);
+    add_val_to_the_beginning(&Head,50);
+    add_val_to_the_beginning(&Head,60);
+
+    printf("After adding new elements: ");
+    printList(Head);
+
+    remove_by_index(&Head,40);
+    printf("After removing the element: ");
+    printList(Head);
+
+}
+void printList(Node *headNode){
+	Node * iter;
+	iter=headNode;
+
+	while(iter !=NULL ){
+		printf("%d ",iter->val);
+		iter=iter->next;
+	}
+    printf("\n");
+}
+
+void add_val_to_the_beginning(Node ** head, int a){
+    NodePtr newNode;
+    newNode=malloc(sizeof(Node));
+
+    newNode->val=a;
+    newNode->next= *head;
+    *head=newNode;
+}
+
+void remove_by_index(Node ** sPtr, int n) {  
+    NodePtr previousPtr;
+    NodePtr currentPtr;
+    NodePtr tempPtr;  
+    //deleting first node
+    if( n == (*sPtr)->val){
+    tempPtr=(*sPtr) -> next;
+    free(*sPtr);
+    *sPtr=tempPtr;
+	}	
+	else{
+		previousPtr = *sPtr;
+		currentPtr = (*sPtr)->next;
+		
+		while(currentPtr !=NULL && currentPtr->val != n){
+		    previousPtr=currentPtr;
+			currentPtr=currentPtr->next;
+		}		
+    	//delete node at currentPtr
+    	if(currentPtr ==NULL){
+    		printf("No values...");
+    	}
+    	else{
+    	    tempPtr=currentPtr->next;
+    	    previousPtr->next=tempPtr;
+    	}		
+	}
+}
+
+
+
+
+
+
+
+
+
+lab6 question 1;
+Input	
+10 20
+Expected
+Top element is:20
+Got	
+Top element is:20
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAXSIZE 100
+
+struct lifo 
+{
+	int st[MAXSIZE];
+	int top;
+};
+typedef struct lifo stack;
+stack s;
+
+void push (stack *s, int element){
+	/* If the stack is full, notify stackoverflow*/
+	/* Otherwise push the element into to stack*/
+	 if(s->top > s->st[MAXSIZE]){
+        printf("yer yok");
+	exit(-1);// exit means to terminate whole code,the end it means,
+	//if we put 0 instead of -1 ,it means the code is correct,like successfully 
+	//you've done but if we put anything except 0 ,it means the code is wrong
+    }else{
+        s->top++;
+        s->st[s->top]=element;
+    }
+}
+void create(stack *s){
+    s->top=-1;
+}
+
+int main(){
+    create(&s);
+    int el;
+    scanf("%d",&el);
+    push(&s,el);
+    scanf("%d",&el);
+    push(&s,el);
+    printf("Top element is:%d\n",s.st[s.top]);
+}
+
+
+
+
+
+
+
+
+
+lab6 quesiton 2;
+
+Input
+12 22
+Expected
+22 12
+Got
+22 12
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAXSIZE 100
+
+struct lifo 
+{
+	int st[MAXSIZE];
+	int top;
+};
+typedef struct lifo stack;
+stack s;
+
+void push (stack *s, int element){
+    if(s->top == (MAXSIZE-1)){
+        printf("overstackflow");
+        exit(-1);
+    }else{
+        s->top++;
+        s->st[s->top]=element;
+    }
+    
+}
+int pop (stack *s){
+    /*Pop if stack is not empty*/
+   
+         return (s->st[s->top--]);       
+    
+}
+int isEmpty(stack *s){
+    if(s->top==-1)
+        return 1;
+    else
+        return 0;
+}
+void create(stack *s){
+    s->top=-1;
+}
+
+int main(){
+    create(&s);
+    int el;
+    scanf("%d",&el);
+    push(&s,el);
+    scanf("%d",&el);
+    push(&s,el);
+    while(!isEmpty(&s)){
+        printf("%d ",pop(&s));
+    }
+}
+
+
+
+
+
+
+
+
+
+lab6 question 3;
+
+Input	
+10 20
+Expected	
+Top element is:20
+Got
+Top element is:20
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct lifo 
+{
+	int value;
+	struct lifo *next;
+};
+typedef struct lifo stack;
+stack *top;
+
+void push (stack **top, int element){
+/* If malloc returns NULL, notify stack is full*/
+/* Otherwise insert into stack*/
+    stack *new;
+	new = (stack *) malloc(sizeof(stack));
+	if(new == NULL){
+		printf ("\n Stack is full");
+		exit(-1);
+	}
+	new->value = element; 
+	new->next = *top;
+	*top = new;
+}
+
+int main(){
+    int el;
+    scanf("%d",&el);
+    push(&top,el);
+    scanf("%d",&el);
+    push(&top,el);
+    printf("Top element is:%d\n",top->value);
+}
+
+
+
+
+
+
+
+
+
+lab6 question 4
+
+Input
+10 20
+Expected
+20 10
+Stack is empty
+Got
+20 10
+Stack is empty
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct lifo 
+{
+	int value;
+	struct lifo *next;
+};
+typedef struct lifo stack;
+stack *top;
+
+void push (stack **top, int element){
+stack *n;
+n=malloc(sizeof(stack));
+if(n==NULL){
+    printf("\nStack is empty");
+    exit(-1);
+}
+else{
+    n->value=element;
+    n->next=*top;
+    *top=n;
+}
+}
+int pop (stack **top){
+	/*If stack is empty, notify*/
+	/*Otherwise pop from stack*/
+	stack *n;
+	int i;
+	if((*top)==NULL){
+	    printf("\nStack is empty");
+	    exit(-42);//onemli degil ne koydugun
+	}else{
+	    i=(*top)->value;
+	    n=(*top)->next;
+	    free(*top);
+	    (*top)=n;
+	    return i;
+	}
+}
+
+int main(){
+    int el;
+    scanf("%d",&el);
+    push(&top,el);
+    scanf("%d",&el);
+    push(&top,el);
+    while(1){
+        printf("%d ",pop(&top));
+    }
+}
+
+
+
+
+lab6 question 5 palindrome
+
+Input	         Expected	              Got	
+abba             Text is palindrome!          Text is palindrome!
+abBa             Text is not palindrome!      Text is not palindrome!
+abcdefggfedcba   Text is palindrome!          Text is palindrome!
+abcdefg1gfedcba  Text is palindrome!          Text is palindrome!
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAXSIZE 100
+char inputS[MAXSIZE*2];
+
+struct lifo 
+{
+	char st[MAXSIZE];
+	int top;
+};
+typedef struct lifo stack;
+stack s;
+
+void push (stack *s, int element){
+
+if(s==NULL){
+    printf("\nStack overflow");
+    exit(-1);
+}else{
+    s->top++;
+    s->st[s->top]=element;
+}
+}
+int pop (stack *s){
+    if(s->top==-1){
+       printf("\nStack underflow"); 
+       exit(-1);
+    }else{
+        return s->st[s->top--];
+    }  
+}
+int isEmpty(stack *s){
+    if(s->top==-1)
+        return 1;
+    else
+        return 0;
+}
+void create(stack *s){
+    s->top=-1;
+}
+
+int main(){
+    scanf("%s",inputS);
+    /*Get the input length*/
+    int len=strlen(inputS);
+    /*Push first half to the stack*/
+    int i;
+    for(i=0;i<len/2;i++){
+        push(&s,inputS[i]);
+    }
+    if(len%2==1){
+        i++;
+    }
+    /*Pop and compare*/
+    while(i<len){
+        int top=pop(&s);
+        if(top!=inputS[i]){
+            printf("Text is not palindrome!\n");
+            return 0;
+        }
+        i++;
+    }
+    printf("Text is palindrome!\n");
+}
+
+
+
+
+
+
+
+
+
+lab7 question 1
+
+Input	
+add CSE1146
+add Intermediate
+add Programming
+bye
+
+Expected and got
+For adding a name use 'add [name]'
+For deleting  use 'delete'
+To end the session use 'bye'
+inserted: CSE1146
+inserted: Intermediate
+inserted: Programming
+End session
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_SIZE  100
+typedef struct{
+	char name[30];
+}_ELEMENT;
+
+typedef struct e{
+	_ELEMENT q_elem[MAX_SIZE];
+	int rear;
+	int front;
+	int full, empty;
+}_QUEUE;
+
+void init_queue(_QUEUE *q){
+	q->rear= q->front= 0;
+	q->full=0; 
+	q->empty=1;
+}
+
+int IsFull(_QUEUE *q){
+	return(q->full);
+}
+
+int IsEmpty(_QUEUE *q){
+	return(q->empty);
+}
+
+void AddQ(_QUEUE *q, _ELEMENT ob){
+	if(IsFull(q)){
+	   printf("no area");
+	   return ;
+	}
+	   q->rear=(q->rear+1)%(MAX_SIZE);
+	   q->q_elem[q->rear]=ob;
+	   if(q->front==q->rear){
+	       q->full=1;
+	   }else{
+	       q->full=0;
+	   }
+	   q->empty=0;
+	       return;
+}
+
+
+
+int main(){
+	char command[40];
+	_ELEMENT ob;
+	_QUEUE A;
+	init_queue(&A);
+	command[0]='\0';
+	printf("For adding a name use 'add [name]'\n");
+	printf("For deleting  use 'delete' \n");
+	printf("To end the session use 'bye' \n");
+	while (strcmp(command,"bye")!=0){
+		scanf("%s",command);
+		if(strcmp(command,"add")==0){
+			scanf("%s",ob.name);
+			if(IsFull(&A))
+				printf("No more insertion!\n");
+			else{
+				AddQ(&A,ob);
+				printf("inserted: %s \n",ob.name);
+			}
+		}
+		
+	}/* End of while */
+	printf("End session \n");
+    return 0;
+}
+
+
+
+
+
+lab7 question 2;
+Input
+add CSE1146
+add Intermediate
+add Programming
+delete
+delete
+bye
+
+Expected and got
+For adding a name use 'add [name]'
+For deleting  use 'delete'
+To end the session use 'bye'
+inserted: CSE1146
+inserted: Intermediate
+inserted: Programming
+deleted CSE1146
+deleted Intermediate
+End session
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_SIZE  100
+
+typedef struct{
+	char name[30];
+}_ELEMENT;
+
+typedef struct{
+	_ELEMENT q_elem[MAX_SIZE];
+	int rear;
+	int front;
+	int full, empty;
+}_QUEUE;
+
+void init_queue(_QUEUE *q){
+	q->rear=0;
+	q->front= 0;
+	q->full=0; 
+	q->empty=1;
+}
+
+int IsFull(_QUEUE *q){
+	return(q->full);
+}
+
+int IsEmpty(_QUEUE *q){
+	return(q->empty);
+}
+
+void AddQ(_QUEUE *q, _ELEMENT ob){
+	if(IsFull(q)){
+        printf("queue is full\n");
+        return ;
+	}
+	q->rear++;
+	q->q_elem[q->rear]=ob;
+	if(q->rear==q->front){
+	    q->full=1;
+	}
+	else{
+	    q->full=0;
+	    q->empty=0;
+	}
+	return;
+}
+
+_ELEMENT  DeleteQ(_QUEUE *q){
+	_ELEMENT temp;
+	temp.name[0]='\0';
+	if(IsEmpty(q)){
+        printf("queue is empty\n");
+        
+	}
+	q->front++;
+	temp=q->q_elem[q->front];
+	if(q->rear==q->front){
+	    q->empty=1;
+	}else{
+	    q->empty=0;
+	}
+   	q->full=0;
+	return temp;
+}
+
+int main(){
+	char command[40];
+	_ELEMENT ob;
+	_QUEUE A;
+	init_queue(&A);
+	command[0]='\0';
+	printf("For adding a name use 'add [name]'\n");
+	printf("For deleting  use 'delete' \n");
+	printf("To end the session use 'bye' \n");
+	while (strcmp(command,"bye")!=0){
+		scanf("%s",command);
+		if(strcmp(command,"add")==0){
+			scanf("%s",ob.name);
+			if(IsFull(&A))
+				printf("No more insertion!\n");
+			else{
+				AddQ(&A,ob);
+				printf("inserted: %s \n",ob.name);
+			}
+		}
+		if(strcmp(command,"delete")==0){
+			if(IsEmpty(&A))
+				printf("Queue is empty \n");
+			else{
+				ob=DeleteQ(&A);
+				printf("deleted %s \n",ob.name);
+			}
+
+		}
+	}/* End of while */
+	printf("End session \n");
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+lab7 question 3;
+
+Input
+enter CSE1146
+enter Intermediate
+enter Programming
+bye
+
+Expected and got
+For entering a name use 'enter <name>'
+For  deleting  use 'delete'
+To end the session use 'bye'
+Name entered CSE1146
+Name entered Intermediate
+Name entered Programming
+End session
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct node{
+	char name[30];
+	struct node *next;
+};
+typedef struct node _QNODE;
+typedef struct {
+        _QNODE *front, *rear;
+}_QUEUE;
+
+_QNODE *enqueue (_QUEUE *q, char x[]){
+	_QNODE *temp;
+	temp= (_QNODE *) malloc (sizeof(_QNODE));
+	if (temp==NULL){
+		printf("Bad allocation \n");
+		return NULL;
+	}
+    strcpy(temp->name,x);
+    temp->next=NULL;
+    
+    if(q->rear==NULL){
+        q->rear=temp;
+        q->front=q->rear;
+    }else{
+        q->rear->next=temp;
+        q->rear=q->rear->next;
+    }
+	return(q->rear);
+}
+
+void init_queue(_QUEUE *q){
+	q->front= q->rear=NULL;
+}
+
+int isEmpty(_QUEUE *q){
+	if(q==NULL) 
+		return 1;
+	else 
+		return 0;
+}
+
+int main()
+{
+	char command[10],val[30];
+	_QUEUE q;
+	init_queue(&q);
+	command[0]='\0';
+	printf("For entering a name use 'enter <name>'\n");
+	printf("For  deleting  use 'delete' \n"); 
+	printf("To end the session use 'bye' \n");
+	while(strcmp(command,"bye")){
+		scanf("%s",command);
+		if(!strcmp(command,"enter")) {
+			scanf("%s",val);
+			if((enqueue(&q,val)==NULL)) 
+				printf("No more pushing please \n");
+			else 
+				printf("Name entered %s \n",val);
+		}
+		
+	} /* while */
+
+	printf("End session \n");
+	return 0;
+}
+
+
+
+
+
+
+
+
+lab 7 question 4;
+
+Input
+enter CSE1146
+enter Intermediate
+enter Programming
+delete
+delete
+bye
+
+Expected and got
+
+For entering a name use 'enter <name>'
+For  deleting  use 'delete'
+To end the session use 'bye'
+Name entered CSE1146
+Name entered Intermediate
+Name entered Programming
+Name deleted CSE1146
+Name deleted Intermediate
+End session
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+typedef struct a{
+    char name[50];
+    struct a *next;
+}first;
+
+typedef struct{
+    first *front,*rear;
+    }second;
+
+void init(second *q){
+    q->front=NULL;
+    q->rear=NULL;
+    }
+
+first *add(second *q,char x[]){
+    first *temp;
+    temp=(first*)malloc(sizeof(first));
+    if(temp==NULL){
+        printf("full.1\n");
+        return NULL;
+    }
+    strcpy(temp->name,x);
+    temp->next=NULL;
+    if(q->rear==NULL){
+        q->rear=temp;
+        q->front=q->rear;
+    }else{
+    q->rear->next=temp;
+    q->rear=q->rear->next;
+    }
+    return q->rear;
+}
+
+char *del(second *q,char x[]){
+    first *temp;
+    if(q->front==NULL){
+        return NULL;
+    }else{
+        temp=q->front;
+        strcpy(x,q->front->name);
+        q->front=q->front->next;
+        free(temp);
+        if(q->front==NULL){
+            q->rear=NULL;
+        }
+        return x;
+    }
+}
+
+int emp(second *q){
+    if(q==NULL){
+        return 1;
+    }else{
+    return 0;
+    }
+}
+
+int main(){
+    char command[15];
+    char exp[15];
+    second st1;
+    init(&st1);
+    command[0]='\0';
+    while(strcmp(command,"bye")!=0){
+        scanf("%s",command);
+        if(!strcmp(command,"add")){
+            scanf("%s",exp);
+
+            if(add(&st1,exp)==NULL){
+                printf("full.0\n");
+            }else{
+            printf("inserted: %s\n",exp);
+            }
+        }
+            if(strcmp(command,"delete")==0){
+                if(emp(&st1)){
+                    printf("empty.0\n");
+                }else{
+                    printf("deleted: %s\n",del(&st1,exp));
+                }
+            }
+        }
+
+    printf("end session.0\n");
+return 0;
+}
+
+
+
+
+
+
+
+
+lab 7 question 5
+
+Input
+
+enter Programming 4
+enter Intermediate 2
+enter CSE1146 4
+enter Lab 1
+delete
+delete
+delete
+delete
+bye
+
+Expected and got
+
+For entering a name use 'enter <name> <priority>'
+For  deleting  use 'delete'
+To end the session use 'bye'
+Name entered Programming priority 4
+Name entered Intermediate priority 2
+Name entered CSE1146 priority 4
+Name entered Lab priority 1
+Name deleted Lab
+Name deleted Intermediate
+Name deleted Programming
+Name deleted CSE1146
+End session
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct a{
+    int prio;
+    char name[50];
+    struct a *next;
+}man;
+typedef struct b{
+    man *front,*rear;
+}oden;
+
+void add(oden *q,char val[],int pri){
+/*
+başa eklenebilir,
+sona ekelenebilir
+ortaya eklenebilir
+*/
+    man *cur,*pre,*newp;
+    newp=(man*)malloc(sizeof(man));
+    strcpy(newp->name,val);
+    newp->prio=pri;
+    newp->next=NULL;
+    if(q->rear==NULL){
+        q->rear=q->front=newp;
+    }else{
+        pre=NULL;
+        cur=q->front;
+        while(cur->prio <=pri && cur->next!=NULL){
+            pre=cur;
+            cur=cur->next;
+        }
+        if(cur== q->front && cur==q->rear){
+            if(cur->prio >= pri){
+                q->front=newp;
+                q->front->next=q->rear;
+            }else{
+                q->rear->next=newp;
+                q->rear=newp;
+            }
+        }else if( cur == q->rear){
+            if(cur->prio <= pri){
+                cur->next=newp;
+                cur=newp;
+            }else{
+                pre->next=newp;
+                newp->next=cur;
+            }
+        }else if(cur==q->front){
+            if(cur->prio <= pri){
+                cur->next=newp;
+                newp->next=q->front->next;
+            }else{
+                newp->next=q->front;
+                q->front=newp;
+            }
+            
+        }else{ // ortaya ekleme gelirse ,insertion
+            pre->next=newp;
+            newp->next=cur;
+        }
+    }
+}
+
+char *del(oden *q,char x[]){
+    if(q->front==NULL){
+        return NULL;
+    }else{
+        strcpy(x,q->front->name);
+        man *temp;
+        temp=q->front;
+        q->front=q->front->next;
+        free(temp);
+        return x;
+    }
+    
+    
+}
+int emp(oden *q){
+    if(q==NULL){
+        return 0;
+    }
+    return 1;
+}
+int main(){
+    oden head;
+    head.front=head.rear=NULL;
+    char com[20],val[20];
+    int num;
+    com[0]='\0';
+	printf("For entering a name use 'enter <name> <priority>'\n");
+	printf("For  deleting  use 'delete' \n"); 
+	printf("To end the session use 'bye' \n");
+    while(strcmp(com,"bye")){
+        scanf("%s",com);
+        if(!strcmp(com,"enter")){
+            scanf(" %s%d",val,&num);
+            add(&head,val,num);
+            printf("Name entered %s priority %d\n",val,num);
+        }
+        else if(!strcmp(com,"delete")){
+            if(emp(&head)){
+                printf("Name deleted %s\n",del(&head,val));
+            }
+        }
+    }
+    printf("End session");
+    return 0;
+}
+
+
+
+
+
+
+lab 8 question 1
+
+Test
+printText(stdout, "This is testing for fprintf...\n", "This is testing for fputs...\n");
+Result
+This is testing for fprintf...
+This is testing for fputs...
+
+
+void printText( FILE* fp, char* text1, char* text2){
+/*check opening file is successful or not*/
+if(fp==NULL){
+    printf("error.");
+}else{
+/*if successful then print text1 using fprintf*/
+fprintf(fp,"%s",text1);
+/*if successful then print text1 using fputs*/
+fputs(text2,fp);
+}
+}
+
+
+
+
+
+
+
+lab 8 question 2
+
+Test
+int number = 123;
+readNumber(stdin, &number);
+Result
+Value of number = 123
+
+void readNumber(FILE* fp, int *number){
+
+/*check opening file is successful or not*/
+if(fp==NULL){
+    printf("error.");
+}else{
+/*if successful then read the umber from the file using fscanf*/
+    fscanf(fp,"%d",number);
+/*print the number on the screen using printf*/
+printf("Value of number = %d",*number);
+}
+}
+
+
+
+
+
+
+
+
+lab 8 question 3
+Test
+printf("Max number is: %d", readNumbers(stdin));
+Input
+123
+456
+Result
+Max number is: 456
+
+
+int readNumbers(FILE* fp){
+    /*declare numbers and max (if necessary)*/
+    int num1,num2;
+    /*declare buffer for fgets*/
+    char buffer[200];
+    /*check opening file is successful or not*/
+    if(fp==NULL){
+        printf("error.");
+    }else{
+        fscanf(fp,"%d",&num1);
+        fgets(buffer,200,fp);
+        fgets(buffer,200,fp);
+        num2=atoi(buffer);
+        return num1>num2 ? num1 : num2; 
+    }
+   return 0;
+    /*if successful then read the first number from the file using fscanf*/
+    /*Note that fscanf does not move the cursor to the next line. You can do this using fgets.*/    
+    /*read the second number from the file using fgets*/   
+    /*convert string to number using atoi*/
+    /*return maximum of those numbers*/
+}
+
+
+
+
+
+
+
+
+lab 8 question 4
+
+Test
+getOddNumbers( stdin, stdout);
+Input
+123
+456
+Result
+123
+
+void getOddNumbers( FILE *fpr, FILE *fpw){
+/*
+char arr[200];
+int num;
+while(fgets(arr,200,fpr)){
+    num=atoi(arr);
+    if(num%2==1){
+        fprintf(fpw,"%d\n",num);
+    }
+}
+}
+*/
+
+int num;// 2 yöntem de kabul etti ,alttaki benim yaptıgım
+while(fscanf(fpr,"%d",&num)!=EOF){
+    if(num%2==1){
+        fprintf(fpw,"%d\n",num);
+    }
+}
+}
+
+
+
+
+
+
+
+lab 8 question 5
+Test
+printFPHex( stdin, stdout);
+Input
+3.14159265359
+2.2250738585072014E-308
+-2.59644556046
+Expected	
+2 digit precision: 3.14
+Hex format: 0x1.921fb54442eeap+1
+2 digit precision: 0.00
+Hex format: 0x1p-1022
+2 digit precision: -2.60
+Hex format: -0x1.4c58540002925p+1
+
+void printFPHex( FILE* fpr, FILE* fpw){
+    double doub;
+    if(fpr ==NULL || fpw ==NULL){
+        printf("error.");
+    }else{
+     while(fscanf(fpr,"%lf",&doub)!=EOF){
+         fprintf(fpw,"2 digit precision: %.2f\n",doub);
+         fprintf(fpw,"Hex format: %a\n",doub);
+     }   
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct a{
+    int num;
+    struct a *next;
+}first;
+
+void addlast(first **q,int x){
+    first *temp,*cur,*pre;
+    temp=(first*)malloc(sizeof(first));
+    if(temp!=NULL){
+        temp->num=x;
+        temp->next=NULL;
+        pre=NULL;
+        cur=(*q);
+        while(cur!= NULL){
+            pre=cur;
+            cur=cur->next;
+        }
+        if(pre==NULL){
+            temp->next=(*q);
+            (*q)=temp;
+        }else{
+        pre->next=temp;
+        temp->next=cur;
+        }
+    }
+}
+
+//addign first function.
+void addfirst(first **q,int x){
+    first *temp;
+    temp=(first*)malloc(sizeof(first));
+    if(temp!=NULL){
+        temp->num=x;
+        temp->next=(*q);
+        (*q)=temp;
+    }
+}
+
+void print(first **q){
+    if((*q)==NULL){
+        printf("linked list is empty.\n");
+    }
+    else{
+    first *temp=(*q);
+    printf("linked list items: ");
+    while(temp!=NULL){
+        printf("%d ",temp->num);
+        temp=temp->next;
+    }
+    printf("\n");
+    }
+}
+
+//insertafter
+
+void insertafter(first **q,int ins,int place){
+    first *temp,*cur;
+    temp=(first*)malloc(sizeof(first));
+    if(temp!=NULL){
+        temp->num=ins;
+        temp->next=NULL;
+
+        cur=(*q);
+        while(cur->num != place){
+            cur=cur->next;
+        }
+        temp->next=cur->next;
+        cur->next=temp;
+    }
+}
+
+//search
+void search(first **q,int x){
+    first *temp=(*q);
+    while(temp!=NULL && temp->num !=x){
+        temp=temp->next;
+    }
+    if(temp==NULL){
+        printf("element not found!\n");
+    }else{
+        printf("%d is present in the list\n",x);
+    }
+}
+
+//deletion
+void del(first **q,first *x){
+    first *temp,*cur,*pre;
+    cur=(*q);
+    pre=NULL;
+    if(cur==NULL){
+        printf("element not found!\n");
+     }
+
+    while(cur->num!=x->num){
+        pre=cur;
+        cur=cur->next;
+    }
+
+    if(cur->num!=x->num){
+        printf("Element not found!\n");
+
+    }else if(cur->num==x->num ){
+        if(pre==NULL){
+            temp=(*q)->next;
+            free((*q));
+            (*q)=temp;
+             printf("%d is deleted from the list\n",x->num);
+        }else{
+        temp=cur->next;
+        pre->next=temp;
+        free(cur);
+         printf("%d is deleted from the list\n",x->num);
+        }
+
+
+    }
+}
+// baþa ekleme , sona ekleme, ortaya ekleme, linear search,deletion,
+int main(){
+    first *head,*temp2;
+    temp2=(first*)malloc(sizeof(first));
+    head=NULL;
+    char com[100];
+    int num,num1;
+    com[0]='\0';
+    while(strcmp(com,"bye")){
+        scanf("%s",com);
+        //adding last
+        if(strcmp(com,"addlast")==0){
+            scanf("%d",&num);
+            addlast(&head,num);
+            printf("inserted %d\n",num);
+        }
+        //adding first
+        else if(strcmp(com,"addfirst")==0){
+            scanf("%d",&num);
+            addfirst(&head,num);
+            printf("insertedfirst %d\n",num);
+        }
+        //print
+        else if(strcmp(com,"print")==0){
+            print(&head);
+        }
+        //insert after
+        else if(strcmp(com,"insertafter")==0){
+            scanf("%d %d",&num,&num1);
+            insertafter(&head,num1,num);
+            printf("%d is inserted after %d\n",num1,num);
+        }
+        //serach
+        else if(strcmp(com,"searchitem")==0){
+            scanf("%d",&num);
+            search(&head,num);
+        }
+        //deletion
+        else if(strcmp(com,"deleteitem")==0){
+            scanf("%d",&temp2->num);
+            del(&head,temp2);
+           // printf("%d is deleted fron the list.\n",temp2->num);
+        }
+        else if(strcmp(com,"bye")){
+            printf("no such command!\n");
+        }
+    }
+    printf("end session.");
+    return 0;
+}
+

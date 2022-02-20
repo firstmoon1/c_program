@@ -1,0 +1,2144 @@
+#include <stdio.h>
+int main(){
+    int a1 = 42;
+    char b1 = 67;
+    char b2 = 'C';
+    float c1=4.2;
+    double d1 =0.21;
+printf("%d %c %d %.1f %.2f %s",a1,b1,b2,c1,d1,"ilkay\n");
+
+printf("%d byte\n",sizeof(int));
+printf("%d byte\n",sizeof(char));
+printf("%d byte\n",sizeof(short int));
+printf("%d byte\n",sizeof(long int));
+printf("%d byte\n",sizeof(float));
+printf("%d byte\n",sizeof(double));
+
+    return 0;
+}
+
+
+
+#include <stdio.h>
+int main(){
+
+    int x =4,y =5,z =6;
+    x=y;
+    y=x+z+1;
+    printf("x:%d\ny:%d\nz:%d\n", x,y,z);
+
+    x=6;
+    y=7;
+    z=8;
+    printf("x:%d y:%d z:%d\n",--x,++y,z++);//x 5 y8 z8
+    printf("x:%d y:%d z:%d\n",x,y,z);//x4 y9 z 9
+    printf("x:%d y:%d z:%d\n",x--,--y,z--);//x5 y7 z9
+/*
+x=4 y=7 z=8
+x=x +(a+1)
+x=x+a+1
+*/
+x += z+1;
+printf("%d\n",x);
+
+x=y=z+8;
+printf("x:%d y:%d z:%d\n", x,y,z);
+
+    return 0;
+}
+
+
+#include <stdio.h>
+int main(){
+    int x =4;
+float y =0.2;
+ printf("%f\n", x/y);
+
+
+    printf("%d\n", 3*6 +8%2);
+    printf("%f\n",4*0.2+5%3);
+    printf("%d\n",(int)3.2);
+    printf("%f\n",(float)3);
+    return 0;
+}
+
+
+
+#include <stdio.h>
+#include <math.h>
+// ax^2 + bx + c seklinde bir denklem yap.
+
+int main(){
+
+int a,b,c;
+float x1,x2,delta;
+
+
+ printf("denklemin a sini giriniz = ");
+ scanf("%d",&a);
+
+ printf("denklemin b sini giriniz = ");
+ scanf("%d",&b);
+
+ printf("denklemin c sini giriniz = ");
+ scanf("%d",&c);
+
+
+ delta= b*b -4*a*c;
+ x1=(-b + (sqrt(delta)))/2*a;
+ x2=(-b + (sqrt(delta)))/2*a;
+
+
+ printf("denklemin 1.koku %.2f,denklemin 2.koku %.2f",x1,x2);
+
+    return 0;
+}
+
+
+#include <stdio.h>
+// notlandırma yap 50 den büyükse geçtin yoksa kaldın
+
+int main(){
+
+int note;
+printf("Notunuzu giriniz =");
+scanf("%d",&note);
+
+if (note >=60){
+    printf("dersten gectiniz.");
+}else{
+printf("dersten kaldiniz.");
+}
+
+    return 0;
+}
+
+
+#include <stdio.h>
+// notlandırma yap 50 den büyükse geçtin yoksa kaldın
+
+int main(){
+
+int a,b=40,c=30;
+
+a= b<c ? b: c;
+printf("%d",a);
+
+    return 0;
+}
+
+
+
+int main()
+{
+  int vize1, vize2, final;
+  float dersort, notort;
+
+   printf("Merhaba!\n");
+
+   printf("1 inci vizeyi giriniz:");
+   scanf("%d",&vize1);
+   printf("2 inci vizeyi giriniz,");
+   scanf("%d",&vize2);
+   printf("3 inci vizeyi giriniz:");
+   scanf("%d",&final);
+   printf("donem not ortalamanizi giriniz:");
+   scanf("%f",&notort);
+  dersort = (vize1*3/10.0 + vize2*3/10.0 + final*4/10.0);
+  if(dersort>=90){
+    printf("ders notunuz AA,Ders ortalamaniz :%f",dersort);
+  }
+   else if(dersort<90 && dersort>=85){
+    printf("ders notunuz BA,Ders ortalamaniz :%f",dersort);
+  }
+  else if(dersort<85 && dersort>=80){
+    printf("ders notunuz BB,Ders ortalamaniz :%f",dersort);
+  }
+  else if(dersort<80 && dersort>=75){
+    printf("ders notunuz CB,Ders ortalamaniz :%f",dersort);
+  }
+   else if(dersort<75 && dersort>=70){
+    printf("ders notunuz CC,Ders ortalamaniz :%f",dersort);
+  }
+  else if(dersort<70 && dersort>=65){
+    printf("ders notunuz DC,Ders ortalamaniz :%f",dersort);
+    if(notort<2.5){
+        printf("dersi tekrar alman yararli olur cunku notort un dusuk.");}
+  }
+   else if(dersort<65 && dersort>=60){
+        printf("ders notunuz DD,Ders ortalamaniz :%f",dersort);
+    if(notort<2.5){
+        printf("dersi tekrar alman yararli olur cunku notort un dusuk.");}
+  }
+  else if(dersort<60){
+        printf("ders notunuz FF,Ders ortalamaniz :%f",dersort);
+    if(notort<2.5)printf("\ndersi tekrar alman yararli olur cunku notort un dusuk.");
+    }
+    return 0;
+}
+
+
+
+başka versiyonu bir üstekinin
+#include <stdio.h>
+
+int main()
+{
+  float vize, odev, final;
+  float dersort, notort,finaldersort;
+
+   printf("Merhaba!\n");
+
+   printf("1 inci vizeyi giriniz:");
+   scanf("%f",&vize);
+   printf("2 inci odev giriniz,");
+   scanf("%f",&odev);
+   printf("3 inci final giriniz:");
+   scanf("%f",&final);
+
+  dersort = (vize*6/10.0 + odev*4/10.0);
+  finaldersort=(dersort*2/10.0 + final*8/10.0);
+
+  if(finaldersort>100){
+    printf("ders notunuz A^+,Ders ortalamaniz :%f",finaldersort);
+  }
+  if(finaldersort>=90 && finaldersort<=100){
+    printf("ders notunuz A,Ders ortalamaniz :%f",finaldersort);
+  }
+   else if(finaldersort<90 && finaldersort>=85){
+    printf("ders notunuz B1,Ders ortalamaniz :%f",finaldersort);
+  }
+  else if(finaldersort<85 && finaldersort>=80){
+    printf("ders notunuz B2,Ders ortalamaniz :%f",finaldersort);
+  }
+  else if(finaldersort<80 && finaldersort>=75){
+    printf("ders notunuz B3,Ders ortalamaniz :%f",finaldersort);
+  }
+   else if(finaldersort<75 && finaldersort>=70){
+    printf("ders notunuz C1,Ders ortalamaniz :%f",finaldersort);
+  }
+  else if(finaldersort<70 && finaldersort>=65){
+    printf("ders notunuz C2,Ders ortalamaniz :%f",finaldersort);
+   }
+   else if(finaldersort<65 && finaldersort>=60){
+        printf("ders notunuz C3,Ders ortalamaniz :%f",finaldersort);
+   }
+  else if(finaldersort<60 && finaldersort>=50){
+        printf("ders notunuz F1,Ders ortalamaniz :%f",finaldersort);
+  }
+  else if(finaldersort<50){
+        printf("ders notunuz F2,Ders ortalamaniz :%f",finaldersort);
+  }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+#include <stdio.h>
+
+int main()
+{
+ int num2,num3;
+ int ch, num1;
+printf("number\n");
+ scanf("%d",&ch);
+
+if((ch>='0') && (ch<='9')){
+//num1 =ch-'0';
+num2 =ch+17;
+num3 =ch+49;
+   // printf("sayi :%d\n",num1);
+    printf("sayi :%c\n\n",ch);
+    //printf("sayi :%d\n\n",2*num1);
+
+    printf("harfi goster +17 fazlasi kucuk :%c\n",num2);
+     printf("harfi goster + 49 fazlasi buyuk :%c\n",num3);
+}else{
+printf("error");
+}
+    return 0;
+}
+
+
+
+
+#include <stdio.h>
+
+int main()
+{
+int num;
+scanf("%d",&num);
+switch (num)
+{
+
+  case  3 : printf("pussy 1\n"); break;
+  case !1+1: printf("fuck 2");    break;
+}
+        return 0;
+}
+
+
+#include <stdio.h>
+enum week {AA,BB,CC,DD,FF}days;
+int main(){
+scanf("%d",&days);
+switch (days)
+{
+ case AA : printf ("AA\n");break;
+ case BB : printf ("BB\n");break;
+ case CC : printf ("CC\n");break;
+ case DD : printf ("DD\n");break;
+ case FF : printf ("FF\n");break;
+}
+        return 0;
+}
+
+
+
+#include <stdio.h>
+enum week {F,DD,CC,BB,AA}days;
+int main()
+{
+    int days;
+
+scanf("%d",&days);
+
+switch (days)
+{
+ case AA : printf ("AA\n");break;
+ case BB : printf ("BB\n");break;
+ case CC : printf ("CC\n");break;
+ case DD : printf ("DD\n");break;
+ case F : printf ("F\n");break;
+
+}
+
+        return 0;
+}
+
+
+
+#include <stdio.h>
+//enum grades {F,DD,CC,BB,AA}grade;
+int main(){
+
+    int  a;
+    scanf(" %d",&a);
+    switch (a){
+    case 0:
+    printf("F");
+    break;
+    case 1:
+    printf("DD");
+    break;
+    case 2:
+    printf("CC");
+    break;
+    case 3:
+    printf("BB");
+    break;
+    case 4:
+    printf("AA");
+    break;
+    }
+    return 0;
+}
+
+
+#include <stdio.h>
+
+int main()
+{
+    float a,b;
+    char ch;
+scanf("%c %f %f",&ch,&a,&b);
+
+switch (ch)
+{
+ case '+' : printf ("%.1f + %.1f = %.1f\n", a, b, a+b);
+ break;
+ case '-' : printf ("%.1f - %.1f = %.1f\n" , a, b, a-b);
+ break;
+ case '*' : printf ("%.1f * %.1f = %.1f\n", a, b, a*b);
+ break;
+ case '/' : printf ("%.1f / %.1f = %.1f\n", a, b, a/b);
+ break;
+}
+        return 0;
+}
+
+
+#include <stdio.h>
+
+int main()
+{
+    char ch;
+scanf("%c",&ch);
+
+switch (ch)
+{
+ case 'M' : printf ("Male\n");
+ break;
+ case 'm' :printf ("Male\n" );
+ break;
+ case 'F' :printf ("Female\n" );
+ break;
+ case 'f' :printf ("Female\n");
+ break;
+ default : printf("ERROR");
+}
+        return 0;
+}
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    char ch;
+scanf("%c",&ch);
+
+switch (ch)
+{
+ case 'M' : printf ("Male\n");
+ break;
+ case 'm' :printf ("Male\n" );
+ break;
+ case 'F' :printf ("Female\n" );
+ break;
+ case 'f' :printf ("Female\n");
+ break;
+ 
+ default : printf("ERROR");
+}
+        return 0;
+}
+
+
+
+#include <stdio.h>
+int main()
+{
+    char ch;
+    
+scanf("%c",&ch);
+if(ch>96 && ch<123){
+    switch (ch){
+    case 'a' : printf("%c is a VOWEL.",ch);break;
+    case 'e' : printf("%c is a VOWEL.",ch);break;
+    case 'i' : printf("%c is a VOWEL.",ch);break;
+    case 'o' : printf("%c is a VOWEL.",ch);break;
+    case 'u' : printf("%c is a VOWEL.",ch);break;
+    default : printf("%c is a CONSONANT.",ch);break;
+    }
+}
+else{
+    printf("%c is not a LETTER.\n",ch);
+}
+        return 0;
+}
+
+
+
+
+#include <stdio.h>
+int main()
+{
+    int islem,tutar,bakiye=1000;
+
+    printf("islemler\n para cekme : 1\n para yatirma : 2\n havale : 3\n bakiye sorgulama : 4 \n kart iade : 5\n \n\n\n");
+    printf("islem seciniz :");
+    scanf("%d",&islem);
+    switch (islem){
+    case 1:
+        printf("ne kadar almak istiyorsunuz:");
+        scanf("%d",&tutar);
+        if(tutar > bakiye){
+        printf("yetersiz bakiye.(paran yok ibine)\n");
+        }
+        else{
+        bakiye-= tutar;
+        printf("bakiyeniz : %d",bakiye);
+        }
+        break;
+    case 2:
+        printf("ne kadar yatirmak istiyorsunuz :");
+        scanf("%d",&tutar);
+        bakiye +=tutar;
+        printf("yeni bakiye :%d",bakiye);
+        break ;
+   case 3:
+        printf("ne kadar para havale yapmak istiyorsunuz:");
+        scanf("%d",&tutar);
+        if(tutar > bakiye){
+        printf("yetersiz bakiye.(paran yok angut)");
+        }
+        else {
+        bakiye-=tutar;
+        printf("havale islemi tamamlandi,yeni bakiyeniz : %d",bakiye);
+    }
+        break;
+    case 4:
+        printf("bakiye : %d",bakiye);
+        break;
+    case 5 :
+        printf("fuck off");
+        break;
+    default :
+        ;
+    }
+        return 0;
+}
+
+
+
+
+düzenledim biraz,
+#include <stdio.h>
+int main()
+{
+    int islem,tutar,bakiye=1000;
+
+    printf("islemler\n para cekme : 1\n para yatirma : 2\n havale : 3\n bakiye sorgulama : 4 \n kart iade : 5\n\n\n\n");
+    printf("islem seciniz :");
+    scanf("%d",&islem);
+    while(1){
+    switch (islem){
+    case 1:
+        printf("ne kadar almak istiyorsunuz:");
+        scanf("%d",&tutar);
+        if(tutar > bakiye){
+        printf("yetersiz bakiye.(paran yok ibine)\n");
+        }
+        else{
+        bakiye-= tutar;
+        printf("bakiyeniz : %d\n",bakiye);
+        }
+        break;
+    case 2:
+        printf("ne kadar yatirmak istiyorsunuz :");
+        scanf("%d",&tutar);
+        bakiye +=tutar;
+        printf("yeni bakiye :%d\n",bakiye);
+        break ;
+   case 3:
+        printf("ne kadar para havale yapmak istiyorsunuz:");
+        scanf("%d",&tutar);
+        if(tutar > bakiye){
+        printf("yetersiz bakiye.(paran yok angut)\n");
+        }
+        else {
+        bakiye-=tutar;
+        printf("havale islemi tamamlandi,yeni bakiyeniz : %d\n",bakiye);
+    }
+        break;
+    case 4:
+        printf("bakiye : %d\n",bakiye);
+        break;
+    case 5 :
+        printf("fuck off\n");
+        break;
+    default :
+        ;
+    }
+    if(islem==5)break;
+    else scanf("%d",&islem);
+    }
+        return 0;
+}
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+int main(){
+    int m,n,g,result=0;
+    scanf("%d%d",&m,&n);
+    for(g=m;g<=n;g++){
+        if(g%2==1){
+            result=g+result;
+        }
+    }
+    printf("Sum of odd numbers = %d",result);
+    
+    return 0;
+}
+
+
+#include <stdio.h>
+
+int main(){
+
+int i ;
+
+for(i=0;i<=5;i++){
+
+printf("%d;", i);
+}
+printf("{%d}", i);
+
+
+    return 0;
+} 
+
+
+#include <stdio.h>
+int main(){
+    int a,b;
+    scanf("%d %d",&a,&b);
+    for(int i= a;i>0;i--){
+        for(int j = b;j>0;j--){
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+
+
+
+#include <stdio.h>
+
+int main(){
+    
+    int a, i, j;
+    
+    scanf( "%d", &a);
+    
+    //while( 0<=a &&  a<=9 ){
+        for(i=a;i>0;i--){
+            for(j=0;j<i;j++){
+                printf("%d ", i);
+            }
+            printf("\n");
+        }
+    }
+    
+    return 0;
+}
+
+
+
+
+
+#include <stdio.h>
+
+int main(){
+    
+    int M,N, i , j;
+    
+    scanf("%d %d", &M, &N);
+    
+    for(i=0;i<M;i++){// row 
+        for(j=0; j<N;j++){// column
+        ( i==0 || i==M-1 || j==0 || j==N-1 ) ? printf("1") : printf("0");
+        
+        /*
+            if( i==0 || i==M-1 || j==0 || j==N-1 ){
+                printf("1");
+            }
+            else{
+                printf("0");
+            }
+        }
+        */
+        }
+        
+        
+        printf("\n");
+    }
+    
+    return 0;
+}
+
+
+
+#include <stdio.h>
+
+int main(){
+    
+    int a, i, j;
+    
+    scanf( "%d", &a);
+    
+    while( !(0<=a &&  a<=9) ){
+    	scanf( "%d", &a);
+    	if(0<=a &&  a<=9){
+    		for(i=a;i>0;i--){
+	            for(j=0;j<i;j++){
+	                printf("%d ", i);
+	            }
+            printf("\n");
+        	}
+		}
+    }
+    
+    return 0;
+}
+
+
+rakamları arasında büyükten kücüge sıralama 3 bas.
+#include <stdio.h>
+int main(){
+    int sayi,digit,b,d,f,result1=0;
+  scanf("%d",&sayi);
+   digit=sayi;
+    b=digit%10;
+    d=(digit/=10)%10;
+    f=(digit/=10)%10;
+        if(b>d && b>f){
+            result1+=b*100;
+            if(d>f) result1+=d*10+f;
+            else if (f>d)result1+=f*10+d;
+        }
+        else if(d>b && d>f){ result1+=d*100;
+            if(b>f) result1+=b*10+f;
+            else if(f>b) result1+=f*10+b;
+        }
+        else if(f>b && f>d) { result1+=f*100;
+            if(d>b) result1+=d*10+b;
+            else if(b>d) result1+=b*10+d;
+        }
+    printf("%d ",result1);
+return 0;
+}
+
+
+
+
+#include <stdio.h>
+int main(){
+    int sayi,i,sum=0;
+  scanf("%d",&sayi);
+  if(sayi==1)printf("the smallest prime is 2.");
+  for(i=2;i<sayi;i++){
+  if(sayi%i==0)printf("no prime number");
+  }
+  if(sayi==i) printf("%d is a prime number",sayi);
+return 0;
+}
+
+
+14 yazdın ya 2 den başlayarak bütün odd sayıları yazıyor mesela 2,3,5,7,11,13
+#include <stdio.h>
+int main()
+{
+  int num,i,count,n;
+  printf("Enter max range: ");
+  scanf("%d",&n);
+  for(num = 1;num<=n;num++){
+    count = 0;
+    for(i=2;i<=num/2;i++){
+      if(num%i==0){
+        count++;
+        break;
+      }
+    }
+
+    if(count==0 && num!= 1)
+      printf("%d ",num);
+  }
+  return 0;
+}
+
+
+reverse number 173 ü  reverse yapıyor 371 mesela.
+#include <stdio.h>
+int main(){
+int a,b=0,c;
+scanf("%d",&a);
+c=a;
+while(c!=0){
+    b=b*10+c%10;
+    c=c/10;
+}
+if(a==b)printf("is a palindrome number.");
+else printf("is not a palindrome number.");
+  return 0;
+}
+
+
+kare olayı ama triangle den yaptım
+#include <stdio.h>
+int main(){
+ int line,column,a,b,bosluk=3;
+
+ scanf("%d",&line);
+ //bosluk=line;
+ for(a=1;a<=line;a++){// kaç line var
+ for(b=0;b<bosluk;b++)// boþluk vericez
+ printf(" ");
+ for(b=0;b<=line;b++)
+ printf("*");
+ printf("\n");
+
+ }
+ return 0;
+}
+
+
+
+sayının faktöriyelini alıp sayıya bölme olayı   5!=120 then 120/5=24 gösterir
+#include <stdio.h>
+int main(){
+int a,b,c=1;
+scanf("%d",&a);
+b=a;
+while(b){
+c*=b;
+b--;
+}
+c/=a;
+printf("%d",c);
+return 0;
+}
+
+
+
+ters triangle
+#include <stdio.h>
+int main(){
+int line,i,c,d;
+scanf("%d",&line);
+for(i=line;i>=1;i--){
+    for(c=0;c<line-i;c++)
+    printf(" ");
+    for(c=0;c<i*2-1 ;c++ )
+    printf("*");
+    printf("\n");
+}
+return 0;
+}
+
+
+
+trinangle ama  hem düz hep ters birleşik
+mesela bunun gibi
+  *
+ ***
+*****
+ ***
+  *
+#include <stdio.h>
+int main(){
+int line,i,j;
+scanf("%d",&line);
+for(i=1;i<=line;i++){
+    for(j=0;j<line-i;j++){
+        printf(" ");
+    }
+    for(j=0;j<i*2-1;j++){
+            printf("#");
+    } printf("\n");
+}
+line=line-1;
+for(i=line;i>0;i--){
+    for(j=0;j<line-i+1;j++){
+        printf(" ");
+    }
+    for(j=0;j<i*2-1;j++){
+            printf("#");
+    } printf("\n");
+}
+return 0;
+}
+
+
+
+
+    /#\
+   /###\
+  /#####\
+ /#######\
+/#########\
+ \#######/
+  \#####/
+   \###/
+    \#/
+int line,i,j,m;
+char d=92;
+scanf("%d",&line);
+for(i=1;i<=line;i++){
+    for(j=0;j<line-i;j++){
+        printf(" ");
+    }
+    for(m=1;m<2;m++){
+        printf("/");}
+    for(j=0;j<i*2-1;j++){
+            printf("#");
+            }
+            for(m=1;m<2;m++){
+        printf("%c",d);
+            }
+printf("\n");
+}
+line=line-1;
+for(i=line;i>0;i--){
+    for(j=0;j<line-i+1;j++){
+        printf(" ");
+    }
+     for(m=1;m<2;m++){
+        printf("%c",d);
+            }
+        for(j=0;j<i*2-1;j++){
+            printf("#");
+            }
+                for(m=1;m<2;m++){
+        printf("/");}
+            printf("\n");
+        }
+return 0;
+}
+
+
+
+
+    /#\
+   /###\
+  /#####\
+ /#######\
+/#########\
+\#########/
+ \#######/
+  \#####/
+   \###/
+    \#/
+#include <stdio.h>
+int main(){
+
+int line,i,j,m;
+char d=92;
+scanf("%d",&line);
+for(i=1;i<=line;i++){
+    for(j=0;j<line-i;j++){
+        printf(" ");
+    }
+    for(m=1;m<2;m++){
+        printf("/");}
+    for(j=0;j<i*2-1;j++){
+            printf("#");
+            }
+            for(m=1;m<2;m++){
+        printf("%c",d);
+            }
+
+printf("\n");
+}
+for(i=line;i>0;i--){
+    for(j=0;j<line-i;j++){
+        printf(" ");
+    }
+     for(m=1;m<2;m++){
+        printf("%c",d);
+            }
+        for(j=0;j<i*2-1;j++){
+            printf("#");
+
+            }
+                for(m=1;m<2;m++){
+        printf("/");}
+            printf("\n");
+        }
+return 0;
+}
+
+
+
+/*
+OUTPUT:
+Enter the number range: 11
+FLOYD'S TRIANGLE
+ 1
+ 2 3
+ 4 5 6
+ 7 8 9 10
+ 11 12 13 14 15
+ 16 17 18 19 20 21
+ 22 23 24 25 26 27 28
+ 29 30 31 32 33 34 35 36
+ 37 38 39 40 41 42 43 44 45
+ 46 47 48 49 50 51 52 53 54 55
+ 56 57 58 59 60 61 62 63 64 65 66
+*/
+#include <stdio.h>
+int main(){
+    int line,i,j,k=1;
+    scanf("%d",&line);
+    printf("\n");
+    for(i=1;i<=line;i++){
+        for(j=0;j<i;j++,k++){
+            printf("%d ",k);
+        }
+     printf("\n");
+     }
+    return 0;
+}
+
+
+     1
+    1 1
+   1 2 1
+  1 3 3 1
+ 1 4 6 4 1
+#include<stdio.h>
+int main(){
+   int line,i,b,a=1;
+   scanf("%d",&line);
+   for(i=0;i<line;i++){
+      for(b=1;b<=line-i;++b){
+         printf(" ");
+         }
+      for(b=0;b<=i;b++){
+         if(i==0 || b==0){
+            printf("%d ",a);
+            }
+         else{
+             a=a*(i-b+1)/b;
+         printf("%d ",a);
+         }
+      }
+      printf("\n");
+   }
+   return 0;
+}
+
+
+
+/*
+1
+2 3
+4 5 6
+7 8 9 10
+*/
+#include<stdio.h>
+int main(){
+   int line,i,b,num=1;
+   scanf("%d",&line);
+   for(i=1;i<=line;i++){
+        for(b=0;b<i;b++){
+        printf("%d ",num);
+        num++;
+   }
+   printf("\n");
+   }
+   return 0;
+}
+
+
+
+/*
+     1
+   2 3 4
+  5 6 7 8 9
+ 10 11 12 13 14 15 16
+17 18 19 20 21 22 23 24 25
+25 24 23 22 21 20 19 18 17
+ 16 15 14 13 12 11 10
+  9 8 7 6 5
+   4 3 2
+     1
+*/
+#include<stdio.h>
+int main(){
+   int line,i,b,a=1,num=1;
+   scanf("%d",&line);
+   for(i=1;i<=line;i++){
+        for(b=0;b<line-i;b++){
+            printf(" ");
+        }
+        for(b=0;b<2*i-1;b++){
+        printf("%d ",num);
+        num++;
+   }
+   printf("\n");
+   }
+   num-=1;
+   for(i=line;i>0;i--){
+        for(b=0;b<line-i;b++){
+            printf(" ");
+        }
+        for(b=0;b<2*i-1;b++){
+        printf("%d ",num);
+        num--;
+   }
+   printf("\n");
+   }
+   return 0;
+}
+
+
+
+// a dan A ya
+#include <stdio.h>
+int main(){
+char ch;
+scanf("%c",&ch);
+while(1){
+if(ch>64 && ch<123){
+    printf("%c\n",ch+32);
+}
+scanf("%c",&ch);
+if(ch=='0'){break;}
+}
+return 0;
+}
+
+
+
+
+sürekli  yaptım function ile
+5 5 5 5 5
+4 4 4 4 
+3 3 3
+2 2
+1
+#include <stdio.h>
+void gel(int sayi);
+int main(){
+ int num;
+while(1){
+ scanf("%d",&num);
+ if(num=='i') break;
+gel(num);
+}
+    return 0;
+}
+void gel(int sayi){
+    int i,j;
+    for(i=sayi;i>0;i--){
+        for(j=0;j<i;j++){
+            printf("%d ",i);
+        }
+        printf("\n");
+    }
+}
+
+
+
+5
+5 4 3 2 1
+4 3 2 1
+3 2 1
+2 1
+1
+#include <stdio.h>
+void gel(int sayi);
+int main(){
+ int num;
+while(1){
+ scanf("%d",&num);
+ if(num==-1) break;
+gel(num);
+}
+    return 0;
+}
+void gel(int sayi){
+    int i,j,a;
+    for(i=sayi;i>0;i--){
+        a=i;
+        for(j=0;j<i;j++){
+            printf("%d ",a);
+            a--;
+        }
+        printf("\n");
+    }
+}
+
+
+
+
+*********
+ *******
+  *****
+   ***
+    *
+    *
+   ***
+  *****
+ *******
+*********
+#include <stdio.h>
+void gel(int sayi);
+int main(){
+ int num;
+while(1){
+ scanf("%d",&num);
+ if(num=='i') break;
+gel(num);
+}
+    return 0;
+}
+void gel(int sayi){// 5=     5 5 5 5 5   4 4 4 4   3 3 3   2 2   1
+    int i,j,a;
+    for(i=sayi;i>0;i--){
+        for(j=0;j<sayi-i;j++){
+            printf(" ");
+        }
+        for(j=0;j<i*2-1;j++){
+            printf("*");
+        }
+        printf("\n");
+    }
+    for(i=1;i<=sayi;i++){
+        //if(i==1) continue;
+        for(j=0;j<sayi-i;j++){
+            printf(" ");
+        }
+        for(j=0;j<i*2-1;j++){
+            printf("*");
+        }
+        printf("\n");
+}
+}
+
+
+
+*********
+ *******
+  *****
+   ***
+    *
+   ***
+  *****
+ *******
+*********
+#include <stdio.h>
+void gel(int sayi);
+int main(){
+ int num;
+while(1){
+ scanf("%d",&num);
+ if(num=='i') break;
+gel(num);
+}
+    return 0;
+}
+void gel(int sayi){// 5=     5 5 5 5 5   4 4 4 4   3 3 3   2 2   1
+    int i,j,a;
+    for(i=sayi;i>0;i--){
+        for(j=0;j<sayi-i;j++){
+            printf(" ");
+        }
+        for(j=0;j<i*2-1;j++){
+            printf("*");
+        }
+        printf("\n");
+    }
+    for(i=1;i<=sayi;i++){
+        if(i==1) continue;
+        for(j=0;j<sayi-i;j++){
+            printf(" ");
+        }
+        for(j=0;j<i*2-1;j++){
+            printf("*");
+        }
+        printf("\n");
+}
+}
+
+
+5
+*****
+ ****
+  ***
+   **
+    *
+     *
+     **
+     ***
+     ****
+     *****
+#include <stdio.h>
+void gel(int sayi);
+int main(){
+ int num;
+while(1){
+ scanf("%d",&num);
+ if(num=='i') break;
+gel(num);
+}
+    return 0;
+}
+void gel(int sayi){
+    int i,j,a;
+    for(i=sayi;i>0;i--){
+        for(j=0;j<sayi-i;j++){
+            printf(" ");
+        }
+        for(j=0;j<i;j++){
+            printf("*");
+        }
+        printf("\n");
+    }
+    for(i=1;i<=sayi;i++){
+       // if(i==1) continue;
+        for(j=0;j<sayi;j++){
+            printf(" ");
+        }
+        for(j=0;j<i;j++){
+            printf("*");
+        }
+        printf("\n");
+}
+}
+
+
+
+
+371
+3 digit
+371 is an armstrong number
+#include <stdio.h>
+int main(){
+int num,i,j=1,k,m=0,r,o,sum=0;
+scanf("%d",&num);
+k=o=num;
+while(k){
+    m++;//number of digit
+    k/=10;
+}printf("%d digit \n",m);
+while(o){
+for(i=0;i<m;i++){
+    r=o%10;
+    j*=r;
+}
+sum+=j;
+o/=10;
+j=1;
+}
+if(sum==num){
+    printf("%d is an armstrong number",num);
+}else printf("%d is not an armstrong number",num);
+return 0;
+}
+
+
+
+//structure denemesi:
+#include<stdio.h>
+#include <string.h>
+
+struct add{
+char name[50];
+int age;
+int point;
+}ilk={"ilkay",23,60},orta={" öznur",33,70},son,abc;
+
+struct add func(struct add n1,struct add n2){
+strcpy(son.name,n1.name);
+strcat(son.name,n2.name);
+son.age= n1.age + n2.age;
+son.point= n1.point + n2.point;
+return son;
+}
+
+int main(){
+    struct add cemal;
+    printf("name and age and point of cemal\n");
+    scanf("%s %d %d",&cemal.name,&cemal.age,&cemal.point);
+    printf("%s, %d  %d\n",cemal.name,cemal.age,cemal.point);
+
+func(ilk,orta);
+
+printf("%s \n%d \n%d\n",son.name,son.age,son.point);
+printf("name please bitch");
+scanf("%s",&abc.name);
+printf("%s",abc.name);
+return 0;
+}
+
+
+
+
+struct deneme 2;
+#include <stdio.h>
+#include <string.h>
+struct type1{
+
+char name[20];
+char gender;
+int age;
+}exp1[10];
+
+void add(struct type1 n1){
+printf(" \n function name=%s  gender=%c  age=%d",n1.name,n1.gender,n1.age);
+}
+
+int main(){
+int i;
+printf("name,gender,age\n");
+for(i=0;i<5;++i){
+    scanf("%s %c %d",&exp1[i].name,&exp1[i].gender,&exp1[i].age);
+}
+
+for(i=0;i<5;i++){
+printf("name=%s  gender=%c  age=%d",exp1[i].name,exp1[i].gender,exp1[i].age);
+printf("\n");
+}
+struct type1 exp3={"ebru",'f',30};
+
+add(exp3);
+return 0;
+}
+
+
+
+struct denemesi;
+
+#include <stdio.h>
+struct complex
+{
+    char name[100];
+    int num;
+}abc,num1={"ilkay",12},num2,num3;
+struct complex func(struct complex n1,struct complex n2);
+
+int main()
+{
+    printf("%s %d\n",num1.name,num1.num);
+     scanf("%s %d",&abc.name,&abc.num);
+   printf("%s %d\n",abc.name,abc.num);
+   func(num2,num3);
+    return 0;
+}
+struct complex func(struct complex n1,struct complex n2){
+scanf("%s%d",&n1.name,&n1.num);
+scanf("%s%d",&n2.name,&n2.num);
+printf("%s %d\n",n1.name,n1.num);
+printf("%s %d\n",n2.name,n2.num);
+};
+
+
+
+
+#include <stdio.h>
+typedef struct complex{
+    char name[100][100];
+    int num;
+}abc;
+abc func(abc n1,abc n2);
+
+int main()
+{
+    abc num2,num3,num1,num4;
+    //printf("%s %d\n",num1.name,num1.num);
+    printf("name\n");
+    fgets(num4.name[0],100,stdin);
+    printf("age");
+     scanf("%d",&num4.num);
+   printf("%s %d\n",num4.name,num4.num);
+   func(num2,num3);
+    return 0;
+}
+struct complex func(struct complex n1,struct complex n2){
+    printf("2name,num\n");
+scanf("%s%d",&n1.name,&n1.num);
+printf("3name,num");
+scanf("%s%d",&n2.name,&n2.num);
+printf("%s %d\n",n1.name,n1.num);
+printf("%s %d\n",n2.name,n2.num);
+};
+
+
+
+
+
+
+
+//3 ü ard arda yaptım 
+#include <stdio.h>
+/*
+prime number .
+armstrong.
+perfect.
+*/
+int arm(int num);
+void prime(int num);
+void perfect(int num);
+int main(){
+int num;
+scanf("%d",&num);
+prime(num);
+if(arm(num)==1){
+printf("%d is an armstrong number\n",num);
+}else{
+printf("%d is not an armstrong number\n",num);
+}
+perfect(num);
+return 0;
+}
+
+void perfect(int num){
+int i,sum=0;
+for(i=1;i<num;i++){
+    if(num%i==0){
+        sum+=i;
+    }
+}
+if(sum==num){
+    printf("%d is a perfect number\n",num);
+}else{
+printf("%d is not a perfect number\n",num);}
+}
+
+int arm(int num){
+    int i,sum=0,n=0,m=num,b,a=1,c=num,e;
+    while(m){
+        m/=10; //150  15  1  0
+        n++;    // 0    1   2   3
+    }
+    e=n;
+    while(num){
+        b=num%10;
+        for(;n>0;n--){
+            a*=b;
+        }
+        num/=10;
+        sum+=a;
+        a=1;
+        n=e;
+
+    }
+if(sum==c){
+return 1;
+}else{
+return 0;
+}
+}
+
+void prime(int num){
+int i,m=0;
+for(i=2;i<num;i++){
+    if(num%i==0){
+        printf("%d is not a prime number\n",num);
+        m=1;
+        break;
+    }
+}
+if(m==0)
+    printf("%d is a prime number\n",num);
+
+
+
+
+
+another structure denemesi
+#include <stdio.h>
+#include <string.h>
+typedef struct second{
+int id;
+char name[10];
+float grade;
+
+}only;
+
+struct first{
+char name[50];
+char gender;
+int age;
+};
+struct first func();
+int main(){
+   struct first c;
+   strcpy(c.name,"ali");
+   c.gender='f';
+   c.age=23;
+   //func();
+    printf("%s %c %d\n",c.name,c.gender,c.age);
+    only monkey;
+    scanf("%s",&monkey.name);
+    monkey.id=5;
+    monkey.grade=60.5;
+    printf("%d %s %f\n",monkey.id,monkey.name,monkey.grade);
+    return 0;
+}
+struct first func(){
+struct first n1;
+printf("name,gender\n");
+scanf("%s %c",&n1.name,&n1.gender);
+n1.age=24;
+printf("%s %c %d\n",n1.name,n1.gender,n1.age);
+
+};
+
+
+
+
+
+
+bubble short örnegi
+#include <stdio.h>
+int main(){
+  int arr[]={5,3,2,12,34,4,1,'\0'},i=0,j,temp,n=0;
+  //,2,12,34,-20,-56,54,12,33,67,-100
+  while(arr[i]!='\0'){
+    n++;
+    i++;
+  }
+  printf("%d\n\n",n);
+  
+  for(i=0;i<n-1;i++)
+  for(j=0;j<n-1-i;j++){
+    if(arr[j]>arr[j+1]){
+        temp=arr[j];
+        arr[j]=arr[j+1];
+        arr[j+1]=temp;
+    }
+  }
+  for(j=0;j<n;j++){
+        printf("%d  ",arr[j]);
+    }
+return 0;
+}
+
+
+cube olayı.,lakin define cube fena
+işlevi cok iyi 
+#include <stdio.h>
+#define cube(x) (x*x*x)
+int main(){
+    int in;
+    int result;
+    scanf("%d", &in);
+    result = cube(in);
+    printf("%d", result);
+    return 0;
+}
+
+
+
+
+/*
+input
+row
+3
+col
+3
+array
+1
+2
+3
+4
+5
+6
+7
+8
+9
+row ların ye column ların toplamını veriyor.
+output
+  1   2   3  6
+  4   5   6  15
+  7   8   9  24
+  12  15  18
+*/
+#include <stdio.h>
+#include <string.h>
+int col;
+void func1(int arr[][col],int i);
+void main(){
+    int sumrow=0,sumcol=0,i,j,m=0,n=0,row;
+    printf("row\n");
+     scanf("%d",&row);
+     printf("col\n");
+     scanf("%d",&col);
+     int arr[row][col];
+     printf("array\n");
+    for(i=0;i<row;i++){
+        for(j=0;j<col;j++){
+           scanf("%d",&arr[i][j]);
+        }
+    }
+
+    //row.
+   for(i=0;i<row;i++){
+        for(j=0;j<col;j++){
+            sumrow+=arr[i][j];
+        }
+        func1(arr,i);
+        printf(" %d\n",sumrow);
+        sumrow=0;
+    }
+
+    //col
+    for(i=0;i<row;i++){
+        for(j=0;j<col;j++){
+            sumcol+=arr[j][i];
+        }
+        if(i==0){ printf("  %d",sumcol);}
+        if(i==1){ printf("  %d",sumcol);}
+        if(i==2){ printf("  %d",sumcol);}
+
+        sumcol=0;
+    }
+}
+
+void func1(int arr[][col],int i){
+    int n;
+    if(i==0){
+            i=1;
+ while(i){
+        for(n=0;n<3;n++){
+            printf("  %d ",arr[i-1][n]);
+        }
+        break;
+    }
+}
+else{
+     while(i){
+        for(n=0;n<3;n++){
+            printf("  %d ",arr[i][n]);
+        }
+        break;
+    }
+}
+}
+
+
+bir arraydaki odd sayıları buluyor.
+input:
+The given array is :
+8 3 9 100 5 4 -5 3 -4 3 7
+output:
+Number of odd number occur(s) : 5 times.
+#include <stdio.h>
+int findOddCountElem (int arr1[], int n )
+{
+     int i,ResultXor=0,m,j;
+     for(j=0;j<n;j++){
+     m=arr1[j];
+     for(i=2;i<m;i++){
+     if(arr1[j]%i==0){
+          break;
+      }
+	  }
+	  if(i==m){
+        ResultXor++;
+	  }
+     }
+     return ResultXor;
+}
+int main(){
+    int i;
+ int arr1[] = {8, 3, 9,100, 5, 4, -5, 3,-4, 3, 7};
+    int ctr = sizeof(arr1)/sizeof(arr1[0]);
+    printf("The given array is :  \n\n");
+	for(i = 0; i < ctr; i++)
+	{
+	printf("%d ", arr1[i]);
+    }
+    printf("\n\n");
+ printf("\n\nNumber of odd number occur(s) : %d times.\n", findOddCountElem(arr1, ctr));
+ return 0;
+}
+
+
+Selection Sort 
+get a size of array
+5
+get those numbers of the array
+-234
+-500
+34
+0
+-13
+-500  -234  -13  0  34
+#include <stdio.h>
+#include <string.h>
+#define max 50
+void func(int arr[],int size){
+ int i,j;
+ int min;
+ for(i=0;i<size;i++){
+    min=i;
+    for(j=i;j<size;j++){
+        if(arr[j]<arr[min]){
+            min=j;
+        }
+    }
+    int temp =arr[i];
+    arr[i]=arr[min];
+    arr[min]=temp;
+ }
+}
+int main(){
+    int i,num,arr[max];
+    printf("get a size of array\n");
+    scanf("%d",&num);
+    printf("get those numbers of the array\n");
+    for(i=0;i<num;i++){
+        scanf("%d",&arr[i]);
+    }
+    func(arr,num);
+    for (i=0; i < num; i++){
+        printf("%d  ", arr[i]);
+}
+    return 0;
+}
+
+
+
+stringlerde sorting:
+input
+Enter name:love
+Enter name:hate
+Enter name:piece
+Enter name:hatred
+output
+Sorted Names
+hate  hatred  love  piece
+
+void sorting(char a[][100],int n);
+int  main()
+{
+char s[10][100];
+int i;
+	for(i=0;i<4;i++)
+	{
+		printf("Enter name:");
+		scanf("%s",&s[i]);
+	}
+	sorting(s,4);
+	printf("\nSorted Names\n\n");
+	for(i=0;i<4;i++)
+		{
+		printf("%s  ",s[i]);
+		}
+return 0;
+}
+void sorting(char a[][100],int n)
+{
+	int i,j;
+	char temp[2][100];
+	    for(i=0;i<n-1;i++)
+		{
+		   for(j=i+1;j<n;j++)
+		   {
+		      if(strcmp(a[j],a[i])<0)
+			{
+				strcpy(temp[0],a[i]);
+				strcpy(a[i],a[j]);
+			        strcpy(a[j],temp[0]);
+			}						
+					
+                    }
+                 }
+}
+
+input
+size
+4
+read the array
+GeeksforGeeks
+I
+from
+am
+output
+I am from GeeksforGeeks
+
+#include <stdio.h>
+#include <string.h>
+/*
+Input : {"GeeksforGeeeks", "I", "from", "am"} sdf fds ghj
+Output : I am from GeeksforGeeks
+*/
+
+int v=100;
+void m(char arr[][v], int n)
+    {
+    int i, key[10][100], j;
+    char temp[10][100];
+    for (i = 1; i < n; i++){
+        strcpy(key[0] , arr[i]);
+        j = i-1;
+        while (j >= 0 && strlen(arr[j])>strlen(key[0]))
+        {
+
+           strcpy(arr[j+1] , arr[j]);
+            j = j-1;
+        }
+        strcpy(arr[j+1] , key[0]);
+        }
+        }
+
+int main(){
+    char arr[10][v],swap[10][v];
+    int i,j,size;
+    printf("size\n");
+    scanf("%d",&size);
+     printf("read the array\n");
+
+    for(i=0;i<size;i++){
+       scanf("%s",arr[i]);
+    }
+    m(arr,size);
+       for(i=0;i<size;i++){
+        printf("%s ",arr[i]);
+    }
+    return 0;
+}
+
+
+
+
+
+missing 
+#include <stdio.h>
+/*
+1 3 2 4 5 6 7  8 10
+missing one is 9
+*/
+int main(){
+
+  int arr[100],i=0,searched=1,num=0,j;
+  char ch;
+  for(i=0;;i++){
+    scanf("%d%c",&arr[i],&ch);
+    num++;
+   if(ch=='\n'){
+    break;
+   }
+  }
+  for(i=searched;i<=num;i++){
+    for(j=0;j<num;j++){
+        if(i==arr[j]){
+            break;
+        }
+    }
+    if(i==arr[j]){
+        continue;
+    }else{
+        printf("%d is the missing one",i);
+        break;
+        }
+  }
+    return 0;
+}
+
+
+
+
+
+double
+#include <stdio.h>
+/*
+1 3 2 4 5 6 7 10 8 10
+doubled one is 10
+*/
+int main(){
+
+  int arr[100],i=0,searched=1,num=0,j,second=0;
+  char ch;
+  for(i=0;;i++){
+    scanf("%d%c",&arr[i],&ch);
+    num++;
+   if(ch=='\n'){
+    break;
+   }
+  }
+  for(i=searched;i<=num;i++){
+    for(j=0;j<num;j++){
+        if(i==arr[j]){
+            second++;
+            if(second==2){
+                break;
+            }
+        }
+    }
+    if(second==2){
+        printf("%d is the doubled one",i);
+        break;
+        }
+        second=0;
+  }
+    return 0;
+}
+
+
+
+
+output;
+2 sirada  buse kisisi female  cinsiyetinde 30 yasinda
+1 sirada  ebru kisisi female  cinsiyetinde 31 yasinda
+
+#include <stdio.h>
+#include <string.h>
+typedef struct def{
+    int num;
+    int arr[100];
+    char name[100];
+    char gender[100];
+}oden;
+oden func(char n2[100],oden n1){
+    oden buse;
+    int i;
+    i=strcmp(n2,"buse");
+    if(i==0){
+        i=1;
+    }
+   if(i){
+ buse.num=2;
+ buse.arr[0]=30;
+ strcpy(buse.name,"buse");
+ strcpy(buse.gender,"female");
+ printf("%d sirada  %s kisisi %s  cinsiyetinde %d yasinda\n",buse.num,buse.name,buse.gender,buse.arr[0]);
+   }
+ n1.num=1;
+ n1.arr[0]=31;
+ strcpy(n1.name,"ebru");
+ strcpy(n1.gender,"female");
+ printf("%d sirada  %s kisisi %s  cinsiyetinde %d yasinda",n1.num,n1.name,n1.gender,n1.arr[0]);
+}
+int main(){
+ oden deneme;
+ func("buse",deneme);
+    return 0;
+}
+
+
+
+
+
+
+
+
+3.12.2021 struct, structsız function , pointer ,pointersiz deneme
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdlib.h>
+
+struct first{
+    char ch;
+    char arr[22];
+    int a;
+
+}oden,oden1={'s',"fuck you 3!",10}; //oden1={6,"fuck you 3!",'s'} yazarsan hata alırsın sıralama önemli
+
+/* 1.deneme
+struct first fuck1(struct first n1,struct first *p){
+    n1.a=(n1.a) * (p->a);
+    return n1;
+};
+*/
+/* 2.deneme
+struct first *fuck1(struct first n1,struct first *p){
+    p->a=(n1.a) * (p->a);
+    //return p;
+};
+*/
+/* 3.deneme
+struct first *fuck1(struct first n1,struct first *p){
+    p->a=(n1.a) * (p->a);
+    //return p;
+};
+*/
+typedef struct second{
+    int b;
+    char arr1[22];
+    char ch1;
+}roger;
+/*  4.deneme
+roger fuck2(roger n1,roger *n2);
+roger fuck2(roger n1,roger *n2){
+    n1.b= n1.b * n2->b;
+    return n1;
+}
+*/
+ /* // 5.deneme
+roger *fuck2(roger n1,roger *n2); // void de yazabilirsin void *fuck2(roger n1,roger *n2);
+roger *fuck2(roger n1,roger *n2){
+    n2->b= n1.b * n2->b;
+    return n2;
+}
+*/
+/* // 6.deneme
+void *fuck2(roger n1,roger *n2); // void de yazabilirsin void *fuck2(roger n1,roger *n2);
+void *fuck2(roger n1,roger *n2){
+    n2->b= n1.b * n2->b;
+
+}
+*/
+
+int main(){
+    int *ap,x=2,y=6,z;
+    ap=&x;
+    struct first *exp,c,*cc;
+    cc=&c;
+    exp=&oden1;
+    oden.a=4;
+    oden.ch='h';
+    strcpy(oden.arr,"fuck you 2!");
+
+    printf("%d \n%c\n%s\n\n",oden.a,oden.ch,oden.arr);
+    printf("%d \n%c\n%s\n\n",oden1.a,oden1.ch,oden1.arr);
+
+/*  1.deneme
+    c=fuck1(oden,exp);
+    printf("c.a= %d\n\n",c.a);
+*/
+/*   2.deneme
+    fuck1(oden,exp);
+    printf("cc.a= %d\n\n",cc->a);
+*/
+/*  3.deneme
+    fuck1(oden,exp);
+    printf("cc.a= %d\n\n",exp->a);
+*/
+
+
+    roger exp1,*exp2,d,h;
+    exp2=&exp1;
+    exp1.b=10;
+    strcpy(d.arr1,"fuck you 1!");
+    d.ch1='c';
+    d.b=3;
+
+    printf("%d\n%c\n%s\n\n",d.b ,d.ch1 ,d.arr1);
+
+/*  //4.deneme
+    h=fuck2(d,exp2);
+    printf("h.b= %d\n\n",h.b);
+*/
+/*  //5.deneme
+    fuck2(d,exp2);
+    printf("h.b= %d\n\n",exp2->b);
+*/
+/*   //6.deneme
+    fuck2(d,exp2);
+    printf("h.b= %d\n\n",exp2->b);
+*/
+
+   /* // malloc deneme
+   int *ap;
+   ap=(int*)malloc(2*sizeof(int*));
+   *ap=2;
+   *(ap+1)=3;
+   printf("%d\n%d",*ap,*(ap+1));
+    */
+
+
+return 0;
+}
+
+
+
+
+
+
+
+
+

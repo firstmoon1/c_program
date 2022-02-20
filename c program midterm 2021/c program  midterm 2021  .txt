@@ -1,0 +1,129 @@
+
+1 soru
+#include <stdio.h>
+int main(){
+
+    int num,i=1,j=0,k=0,m=0;
+    char arr[10]={'\0'};
+    scanf("%d",&num);
+    while(i!=num+1){
+        for(j=0;j<26;j++,i++){
+            arr[k]=j+'A';
+            if(i==num){
+                printf("%s",arr);
+                return 0;
+            }
+        }
+        if(i==27){
+            k++;
+            arr[m]='A';
+            continue;
+        }
+        arr[m]+=1;
+    }
+return 0;
+}
+
+
+
+
+
+
+
+
+2.soru
+#include <stdio.h>
+
+int main(){
+    int arr[4],i,max=0;
+    for(i=0;i<4;i++){
+        scanf("%d", (arr+i) );
+    }
+    max=arr[0];
+    for(i=0;i<4;i++){
+        if(max < arr[i]){
+            max=arr[i];
+        }
+    }
+    printf("%d",max);
+
+
+return 0;
+}
+
+
+
+
+
+
+
+3.soru
+#include <stdio.h>
+
+int main(){
+   int w=40,y=52;
+   float hs,ys,it,tax=15.0;
+   scanf("%f",&ys);
+   if(ys<=0){
+    printf("Invalid entry.");
+    return 0;
+   }
+    it= ys*(tax/100);
+    ys=ys-it;
+    hs=ys/(y*w);
+    printf("%.3f",hs);
+return 0;
+}
+
+
+
+
+
+
+
+
+4.soru
+
+#include <stdio.h>
+
+int main(){
+   char ch;
+   scanf("%c",&ch);
+   if( (ch<='z' && ch>='a') ){
+        printf("lower");
+   }else if(ch>='A' && ch <='Z'){
+        printf("upper");
+   }else if(ch>='0' && ch<='9'){
+        printf("digit");
+   }else{
+        printf("symbol");
+   }
+return 0;
+}
+
+
+
+
+
+
+
+5.soru
+#include <stdio.h>
+
+int main(){
+   int num,i,j=0,arr[50];
+   scanf("%d",&num);
+   i=num-1;
+   while(i!=0){
+        if(num%i==0){
+            arr[j]=i;
+            j++;
+        }
+        --i;
+   }
+   for(i=0;i<j;i++){
+        printf("%d ",arr[i]);
+   }
+return 0;
+}
+
