@@ -1,0 +1,185 @@
+
+
+
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+//  3  ve 9  ve 15  in  3  9  15
+// vertical : lar 1 den 17  5 column   and 1 den 17  11 column
+// horizontal ... lar row 4 is full .... and row 10 is ful ....
+
+
+
+int main(){
+    int num[10];
+    int i,found=0,j,m=0,k;
+    char arr[17][17]={' '};
+    string name1,name2;
+    cin>>name1>>name2;
+
+
+
+    cout<<"A fun game\n";
+    cout<<"Specify the name of Player1: "<<name1<<endl;
+    cout<<"Specify the name of Player2: "<<name2<<endl;
+    cout<<name1<<" : x  -  "<<name2<<" : o\n";
+
+   for(i=0;i<17;i++){
+        for(j=0;j<17;j++){
+            if( i==2 && j==2 ){
+                arr[i][j]='7';
+                continue;
+            }
+            if(i==2 && j==8){
+                arr[i][j]='8';
+                continue;
+            }
+            if(i==2 && j==14){
+                arr[i][j]='9';
+                continue;
+            }
+            if( i==8 && j==2 ){
+                arr[i][j]='4';
+                continue;
+            }
+            if(i==8 && j==8){
+                arr[i][j]='5';
+                continue;
+            }
+            if(i==8 && j==14){
+                arr[i][j]='6';
+                continue;
+            }
+            if( i==14 && j==2){
+                arr[i][j]='1';
+                continue;
+            }
+            if(i==14 && j==8){
+                arr[i][j]='2';
+                continue;
+            }
+            if(i==14 && j==14){
+                arr[i][j]='3';
+                continue;
+            }
+// vertical : lar 1 den 17  5 column   and 1 den 17  11 column
+// horizontal ... lar row 4 is full .... and row 10 is ful ....
+
+// . ve : kesisim yerleri ( column 4 ,row 5 )   ( column 4 ,row 11 )
+// ( column 10  ,row 5  )  ( column 10 ,row 11 )
+
+            if(( i%2==0  && j==5) || (i%2==0 && j==11)  ){
+                arr[i][j]=':';
+                continue;
+            }
+            if( (i==4 && j==5) || (i==4 && j==11)
+               || (i==10 && j==5) || (i==10 && j==11) ){
+                continue;
+            }
+            if(i==4 || i==10){
+                arr[i][j]='.';
+                continue;
+            }
+           // arr[i][j]=' ';
+        }
+    }
+     for(i=0;i<17;i++){
+        for(j=0;j<17;j++){
+            cout<<arr[i][j];
+        }
+        cout<<"\n";
+    }
+
+
+
+   for(m=0;m<9;m++){
+
+    cin>>num[m];
+
+    if(num[m]>9){
+        cout<<"Invalid move"<<"\n";
+        continue;
+        // ayný sayý geldiyse
+    }else{
+        for(k=0; k<=m ; k++){
+            if( num[k]==num[m] ){
+                found++;
+                if(found>1){
+                        break;
+                }
+            }
+        }
+    }
+    if(found>=2){
+        cout<<"Invalid move "<<"\n";
+        found=0;
+        continue;
+    }
+    found=0;
+    if(m%2==0){
+
+    cout<<name1<<", choose your move: "<<num[m]<<endl;
+    for(i=0;i<17;i++){
+        for(j=0;j<17;j++){
+            if(arr[i][j] == num[m]+'0'){
+                arr[i][j]='x';
+                break;
+            }
+        }
+        if(arr[i][j]==num[m]){
+                break;
+            }
+    }
+    }else{
+    cout<<name2<<", choose your move: "<<num[m]<<endl;
+    for(i=0;i<17;i++){
+        for(j=0;j<17;j++){
+            if(arr[i][j]==num[m]+'0'){
+
+                arr[i][j]='o';
+
+                break;
+            }
+        }
+        if(arr[i][j]==num[m]){
+                break;
+            }
+    }
+    }
+    //printing
+    for(i=0;i<17;i++){
+        for(j=0;j<17;j++){
+            cout<<arr[i][j];
+        }
+        cout<<"\n";
+    }
+    //winning part
+    // yatay
+
+    if( (arr[2][2] =='x' && arr[2][8] =='x' &&  arr[2][14] =='x' ) || (arr[2][2] =='o' && arr[2][8] =='o' &&  arr[2][14] =='o' )||
+        (arr[8][2] =='x' && arr[8][8] =='x' &&  arr[8][14]) =='x' || (arr[8][2] =='o' && arr[8][8] =='o' &&  arr[8][14] =='o' )||
+        (arr[14][2] =='x' && arr[14][8] =='x' &&  arr[14][14]) =='x' || (arr[14][2] =='o' && arr[14][8] =='o' &&  arr[14][14] =='o' ) ||
+// dikey
+        (arr[2][2] =='x' && arr[8][2] =='x' &&  arr[14][2] == 'x' ) || (arr[2][2] =='o' && arr[8][2] =='o' &&  arr[14][2]) == 'o' ||
+        (arr[2][8] =='x' && arr[8][8] =='x' &&  arr[14][8] == 'x' ) || (arr[2][8] =='o' && arr[8][8] =='o' && arr[14][8] == 'o' ) ||
+        (arr[2][14] =='x' && arr[8][14] =='x' &&  arr[14][14] == 'x' ) || (arr[2][14] =='o' && arr[8][14] =='o' &&  arr[14][14] == 'o' ) ||
+// capraz
+        (arr[2][2] =='x' && arr[8][8] =='x' &&  arr[14][14] == 'x' ) || (arr[2][2] =='o' && arr[8][8] =='o' &&  arr[14][14]  =='o' ) ||
+        (arr[2][14] =='x' && arr[8][8] =='x' &&  arr[14][2] == 'x' ) || (arr[2][14] =='o' && arr[8][8] =='o' &&  arr[14][2] =='o') )
+
+        {
+        if(m%2==0){
+            cout<<name1<<" wins.";
+            return 0;
+        }else{
+            cout<<name2<<" wins.";
+            return 0;
+        }
+    }
+    }
+    cout<<"==> Game draw.";
+
+return 0;
+}
